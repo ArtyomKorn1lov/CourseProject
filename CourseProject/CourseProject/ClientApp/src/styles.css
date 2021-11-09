@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #ececec;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ececec;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    color: #ececec;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ececec;
+    text-decoration: none;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+a:hover {
+    background-image: radial-gradient(ellipse farthest-corner at 50% 50%, rgba(145, 150, 161, 0.7), rgba(145, 150, 161, 0.7));
+}
+
+a {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.page-selection {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.fisrt-variation-bar {
+    width: 300px;
+    background: #444444;
+    border: 3px solid rgb(48, 48, 48);
+    border-radius: 15px;
+    box-shadow: 0 0 10px;
+    padding: 15px;
+}
+
+.fisrt-variation-bar:hover {
+    background-image: radial-gradient(ellipse farthest-corner at 50% 50%, rgba(145, 150, 161, 0.7), rgba(145, 150, 161, 0.7));
+}
+
+.second-variation-bar {
+    width: 300px;
+    background: #7c7c7c;
+    border: 3px solid rgb(48, 48, 48);
+    border-radius: 15px;
+    box-shadow: 0 0 10px;
+    padding: 15px;
+}
+
+.second-variation-bar:hover {
+    background-image: radial-gradient(ellipse farthest-corner at 50% 50%, rgba(66, 66, 66, 0.7), rgba(66, 66, 66, 0.7));
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

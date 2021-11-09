@@ -1,0 +1,23 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.centered-container {
+    width: 1200px;
+    position: relative;
+    background: #616161;
+    flex-grow: 1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-block {
+    background: #444444;
+    display: flex;
+    justify-content: center;
+    min-width: 1440px;
+    box-shadow: 0 0 10px;
+}
