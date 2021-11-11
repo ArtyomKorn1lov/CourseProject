@@ -1,0 +1,20 @@
+<div class="page-selection">
+    <div class="auth-img-pos">
+        <img class="close-img" src="/assets/images/close.gif" mat-dialog-close>
+    </div>
+    <div class="auth-head-block">
+        <h1>Регистрация</h1>
+    </div>
+    <div class="auth-inputs-block">
+        <input class="auth-input" type="text" placeholder="Имя">
+        <input class="auth-input" type="text" placeholder="Логин">
+        <input class="auth-input" type="password" placeholder="Пароль">
+        <input class="auth-input" type="text" placeholder="Подтвердите пароль">
+        <button class="fisrt-variation-bar">
+            <h1>Зарегистрироваться</h1>
+        </button>
+        <button class="second-variation-bar" (click)="openAuthDialog()">
+            <h1>У меня уже есть аккаунт</h1>
+        </button>
+    </div>
+</div>
