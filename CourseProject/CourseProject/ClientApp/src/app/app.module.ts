@@ -14,6 +14,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAuthComponent } from './dialog-auth/dialog-auth.component';
 import { DialogRegComponent } from './dialog-reg/dialog-reg.component';
+import { DeliveryListComponent } from './delivery-list/delivery-list.component';
+import { CreateDeliveryComponent } from './create-delivery/create-delivery.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { DialogRegComponent } from './dialog-reg/dialog-reg.component';
     MainpageComponent,
     ProductListComponent,
     DialogAuthComponent,
-    DialogRegComponent
+    DialogRegComponent,
+    DeliveryListComponent,
+    CreateDeliveryComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,8 @@ import { DialogRegComponent } from './dialog-reg/dialog-reg.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: MainpageComponent },
-      { path: 'product-list', component: ProductListComponent },
+      { path: 'delivery-list', component: DeliveryListComponent },
+      { path: 'orders', component: OrdersComponent }
     ]),
     BrowserAnimationsModule,
     MatDialogModule,
