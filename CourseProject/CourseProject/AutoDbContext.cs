@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using CourseProject.Configurations;
 
-namespace CourseProject.DbContexts
+namespace CourseProject
 {
     public class AutoDbContext : DbContext
     {
@@ -11,6 +12,10 @@ namespace CourseProject.DbContexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new DetailConfiguration());
+            builder.ApplyConfiguration(new ProviderConfiguration());
+            builder.ApplyConfiguration(new DeliveryConfiguration());
         }
     }
 }
