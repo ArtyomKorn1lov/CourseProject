@@ -19,6 +19,8 @@ namespace CourseProject.Configurations
             builder.Property(p => p.Name).IsRequired();
             builder.Property(p => p.Address).IsRequired();
             builder.Property(p => p.Phone).IsRequired();
+
+            builder.HasMany(p => p.Deliverys).WithOne().HasForeignKey(i => i.ProviderId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

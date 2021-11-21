@@ -20,6 +20,8 @@ namespace CourseProject.Configurations
             builder.Property(d => d.ArticleNumber).IsRequired();
             builder.Property(d => d.Price).IsRequired();
             builder.Property(d => d.Note);
+
+            builder.HasMany(p => p.Deliverys).WithOne().HasForeignKey(i => i.DetailId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

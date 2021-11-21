@@ -12,5 +12,6 @@ namespace CourseProject.Entity
         public int ArticleNumber { get; set; }
         public int Price { get; set; }
         public string Note { get; set; }
+        public List<Delivery> Deliverys { get; set; }
     }
 }

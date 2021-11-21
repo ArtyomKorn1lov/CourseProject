@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CourseProject.Converters;
+using CourseProject.Dto;
+using CourseProject.Entity;
+using CourseProject.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,81 +11,28 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Controllers
 {
+    [ApiController]
+    [Route("api/detail")]
     public class DetailController : Controller
     {
-        // GET: DetailController
-        public ActionResult Index()
+        private IUnitOfWork _unitOfWork;
+        private IDetailRepository _detailRepository;
+
+        public DetailController(IUnitOfWork unitOfWork, IDetailRepository detailRepository)
         {
-            return View();
+            _unitOfWork = unitOfWork;
+            _detailRepository = detailRepository;
         }
 
-        // GET: DetailController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("all")]
+        public List<DetailDto> GetAll()
         {
-            return View();
-        }
-
-        // GET: DetailController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DetailController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            List<Detail> details = _detailRepository.GetAll();
+            if(details == null)
             {
-                return RedirectToAction(nameof(Index));
+                return new List<DetailDto>();
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DetailController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: DetailController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DetailController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DetailController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return details.Select(d => DtoConverter.ConvertToDetailDto(d)).ToList();
         }
     }
 }

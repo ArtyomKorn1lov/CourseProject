@@ -14,8 +14,7 @@ namespace CourseProject.Configurations
         {
             builder.ToTable(nameof(Delivery));
 
-            builder.HasMany(d => d.Providers).WithOne().HasForeignKey(i => i.Id).OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(d => d.Details).WithOne().HasForeignKey(i => i.Id).OnDelete(DeleteBehavior.Cascade);
+            builder.HasKey(d => new { d.ProviderId, d.DetailId });
 
             builder.Property(d => d.Count).IsRequired();
             builder.Property(d => d.Date).IsRequired();
