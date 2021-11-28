@@ -9,7 +9,7 @@ export class CreateDeliveryComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
