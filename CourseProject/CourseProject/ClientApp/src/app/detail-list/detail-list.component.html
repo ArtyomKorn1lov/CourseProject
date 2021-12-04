@@ -1,0 +1,56 @@
+<div class="page-selection">
+    <div class="head-block">
+        <h2>Список деталей</h2>
+    </div>
+    <div class="controll-button-block">
+        <button class="fisrt-variation-bar" [routerLink]="['/orders']">
+            <h1>Назад</h1>
+        </button>
+        <button class="second-variation-bar">
+            <h1>Создать деталь</h1> 
+        </button>
+    </div>
+    <div class="object-location">
+        <div class="object">
+            <div class="element">
+                <p>Id</p>
+            </div>
+            <div class="element">
+                <p>Название</p>
+            </div>
+            <div class="element">
+                <p>Номер</p>
+            </div>
+            <div class="element">
+                <p>Цена</p>
+            </div>
+            <div class="element">
+                <p>Навигация</p>
+            </div>
+        </div>
+        <div class="object-list" *ngFor="let detail of details">
+            <div class="object">
+                <div class="element">
+                    <p>{{detail.id}}</p>
+                </div>
+                <div class="element">
+                    <p>{{detail.name}}</p>
+                </div>
+                <div class="element">
+                    <p>{{detail.articleNumber}}</p>
+                </div>
+                <div class="element">
+                    <p>{{detail.price}}</p>
+                </div>
+                <div class="element-button">
+                    <button class="object-button">
+                        <h1>Удалить</h1>
+                    </button>
+                    <button class="object-button">
+                        <h1>Подробнее</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

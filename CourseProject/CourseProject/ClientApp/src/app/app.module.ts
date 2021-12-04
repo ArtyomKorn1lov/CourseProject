@@ -17,6 +17,7 @@ import { DialogRegComponent } from './dialog-reg/dialog-reg.component';
 import { DeliveryListComponent } from './delivery-list/delivery-list.component';
 import { CreateDeliveryComponent } from './create-delivery/create-delivery.component';
 import { OrdersComponent } from './orders/orders.component';
+import { DetailListComponent } from './detail-list/detail-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OrdersComponent } from './orders/orders.component';
     DialogRegComponent,
     DeliveryListComponent,
     CreateDeliveryComponent,
-    OrdersComponent
+    OrdersComponent,
+    DetailListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { OrdersComponent } from './orders/orders.component';
     RouterModule.forRoot([
       { path: '', component: MainpageComponent },
       { path: 'delivery-list', component: DeliveryListComponent },
-      { path: 'orders', component: OrdersComponent }
+      { path: 'detail-list', component: DetailListComponent },
+      { path: 'orders', component: OrdersComponent },
     ]),
     BrowserAnimationsModule,
     MatDialogModule,

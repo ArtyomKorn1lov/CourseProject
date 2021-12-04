@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Detail } from '../dto/detail';
-import { DetailService } from '../services/detail.service';
 
 @Component({
   selector: 'app-delivery-list',
@@ -9,17 +7,9 @@ import { DetailService } from '../services/detail.service';
 })
 export class DeliveryListComponent implements OnInit {
 
-  public details: Detail[] = [];
-
-  constructor(private detailService: DetailService) { }
-
-  getDetails(): void {
-    this.detailService.getDetails().subscribe(data => this.details = data);  
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getDetails();
-    console.log(this.details[0]);
   }
 
 }
