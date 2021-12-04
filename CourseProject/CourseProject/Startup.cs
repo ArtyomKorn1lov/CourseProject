@@ -1,4 +1,5 @@
 using CourseProject.Repositories;
+using CourseProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace CourseProject
             services.AddControllers();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IDetailService, DetailService>();
             services.AddScoped<IDetailRepository, DetailRepository>();
 
             // In production, the Angular files will be served from this directory

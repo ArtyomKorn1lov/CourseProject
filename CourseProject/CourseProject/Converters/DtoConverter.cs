@@ -11,11 +11,26 @@ namespace CourseProject.Converters
     {
         public static DetailDto ConvertToDetailDto(Detail detail)
         {
-            if(detail == null)
+            if (detail == null)
             {
                 return null;
             }
             return new DetailDto
+            {
+                Id = detail.Id,
+                Name = detail.Name,
+                ArticleNumber = detail.ArticleNumber,
+                Price = detail.Price,
+                Note = detail.Note
+            };
+        }
+        public static Detail CovertToDetailEntity(DetailDto detail)
+        {
+            if (detail == null)
+            {
+                return null;
+            }
+            return new Detail
             {
                 Id = detail.Id,
                 Name = detail.Name,

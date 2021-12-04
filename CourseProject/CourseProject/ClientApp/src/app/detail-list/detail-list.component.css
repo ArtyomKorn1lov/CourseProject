@@ -1,20 +1,3 @@
-.head-block {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.controll-button-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.controll-button-block .fisrt-variation-bar {
-    width: 200px;
-}
-
 .object-location {
     display: flex;
     flex-direction: column;

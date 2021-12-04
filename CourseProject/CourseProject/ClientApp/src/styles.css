@@ -106,6 +106,7 @@ a {
     border-radius: 16px;
     box-shadow: 0 0 10px;
     border: 1px solid rgba(145, 150, 161, 0.4);
+    font-size: 20px;
     margin-bottom: 15px;
 }
 
@@ -139,4 +140,21 @@ a {
 
 .auth-inputs-block .second-variation-bar {
     width: 400px;
+}
+
+.head-block {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.controll-button-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.controll-button-block .fisrt-variation-bar {
+    width: 200px;
 }

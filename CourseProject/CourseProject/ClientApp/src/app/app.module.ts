@@ -18,6 +18,7 @@ import { DeliveryListComponent } from './delivery-list/delivery-list.component';
 import { CreateDeliveryComponent } from './create-delivery/create-delivery.component';
 import { OrdersComponent } from './orders/orders.component';
 import { DetailListComponent } from './detail-list/detail-list.component';
+import { CreateDetailComponent } from './create-detail/create-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DetailListComponent } from './detail-list/detail-list.component';
     DeliveryListComponent,
     CreateDeliveryComponent,
     OrdersComponent,
-    DetailListComponent
+    DetailListComponent,
+    CreateDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { DetailListComponent } from './detail-list/detail-list.component';
       { path: '', component: MainpageComponent },
       { path: 'delivery-list', component: DeliveryListComponent },
       { path: 'detail-list', component: DetailListComponent },
+      { path: 'create-detail', component: CreateDetailComponent },
       { path: 'orders', component: OrdersComponent },
     ]),
     BrowserAnimationsModule,
