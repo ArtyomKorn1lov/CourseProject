@@ -13,5 +13,13 @@ namespace CourseProject.Entity
         public int Price { get; set; }
         public string Note { get; set; }
         public List<Delivery> Deliverys { get; set; }
+
+        public void CopyFrom(Detail detail)
+        {
+            Name = detail.Name;
+            ArticleNumber = detail.ArticleNumber;
+            Price = detail.Price;
+            Note = detail.Note;
+        }
     }
 }

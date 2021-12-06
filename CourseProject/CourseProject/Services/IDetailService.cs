@@ -8,10 +8,10 @@ namespace CourseProject.Services
 {
     public interface IDetailService
     {
-        List<Detail> GetAll();
-        Detail GetById(int id);
-        bool Create(Detail detail);
-        //void Update(Detail detail);
-        bool Delete(int id);
+        Task<List<Detail>> GetAll();
+        Task<Detail> GetById(int id);
+        Task<bool> Create(Detail detail);
+        Task<bool> Update(Detail detail);
+        Task<bool> Delete(int id);
     }
 }

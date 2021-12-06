@@ -1,7 +1,7 @@
 ﻿using CourseProject.Entity;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,26 +16,32 @@ namespace CourseProject.Repositories
             _autoDbContext = context;
         }
 
-        public void Create(Detail detail)
+        public async Task Create(Detail detail)
         {
-            _autoDbContext.Set<Detail>().Add(detail);
+            await _autoDbContext.Set<Detail>().AddAsync(detail);
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            Detail detail = _autoDbContext.Set<Detail>().FirstOrDefault(d => d.Id == id);
+            Detail detail = await _autoDbContext.Set<Detail>().FirstOrDefaultAsync(d => d.Id == id);
             if (detail != null)
                 _autoDbContext.Set<Detail>().Remove(detail);
         }
 
-        public List<Detail> GetAll()
+        public async Task<List<Detail>> GetAll()
         {
-            return _autoDbContext.Set<Detail>().ToList();
+            return await _autoDbContext.Set<Detail>().ToListAsync();
         }
 
-        public Detail GetById(int id)
+        public async Task<Detail> GetById(int id)
         {
-            return _autoDbContext.Set<Detail>().FirstOrDefault(d => d.Id == id);
+            return await _autoDbContext.Set<Detail>().FirstOrDefaultAsync(d => d.Id == id);
+        }
+
+        public async Task Update(Detail detail)
+        {
+            Detail _detail = await GetById(detail.Id);
+            _detail.CopyFrom(detail);
         }
     }
 }

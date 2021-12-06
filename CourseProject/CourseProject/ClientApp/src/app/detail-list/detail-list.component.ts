@@ -17,9 +17,8 @@ export class DetailListComponent implements OnInit {
     this.detailService.getDetails().subscribe((data: Detail[]) => this.details = data);  
   }
 
-  deleteDetail(id: number): void {
-    console.log(id);
-    this.detailService.deleteDetail(id).subscribe(x => console.log(x));
+  pushDataInService(id: number): void {
+    this.detailService.pushInService(id);
   }
 
   ngOnInit(): void {

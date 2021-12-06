@@ -16,12 +16,12 @@ namespace CourseProject.Services
             _detailRepository = detailRepository;
         }
 
-        public bool Create(Detail detail)
+        public async Task<bool> Create(Detail detail)
         {
             try
             {
                 if(detail != null)
-                    _detailRepository.Create(detail);
+                    await _detailRepository.Create(detail);
                 return true;
             }
             catch
@@ -30,11 +30,11 @@ namespace CourseProject.Services
             }
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             try
             {
-                _detailRepository.Delete(id);
+                await _detailRepository.Delete(id);
                 return true;
             }
             catch
@@ -43,14 +43,27 @@ namespace CourseProject.Services
             }
         }
 
-        public List<Detail> GetAll()
+        public async Task<List<Detail>> GetAll()
         {
-            return _detailRepository.GetAll();
+            return await _detailRepository.GetAll();
         }
 
-        public Detail GetById(int id)
+        public async Task<Detail> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _detailRepository.GetById(id);
+        }
+
+        public async Task<bool> Update(Detail detail)
+        {
+            try
+            {
+                await _detailRepository.Update(detail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

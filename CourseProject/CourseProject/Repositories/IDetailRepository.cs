@@ -8,10 +8,10 @@ namespace CourseProject.Repositories
 {
     public interface IDetailRepository
     {
-        List<Detail> GetAll();
-        Detail GetById(int id);
-        void Create(Detail detail);
-        //void Update(Detail detail);
-        void Delete(int id);
+        Task<List<Detail>> GetAll();
+        Task<Detail> GetById(int id);
+        Task Create(Detail detail);
+        Task Update(Detail detail);
+        Task Delete(int id);
     }
 }

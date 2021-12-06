@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Converters
 {
-    public static class DtoConverter
+    public static class DetailDtoConverter
     {
         public static DetailDto ConvertToDetailDto(Detail detail)
         {

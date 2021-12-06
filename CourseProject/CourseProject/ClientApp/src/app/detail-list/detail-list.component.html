@@ -43,10 +43,7 @@
                     <p>{{detail.price}}</p>
                 </div>
                 <div class="element-button">
-                    <button class="object-button" (click)="deleteDetail(detail.id)">
-                        <h1>Удалить</h1>
-                    </button>
-                    <button class="object-button">
+                    <button class="object-button" [routerLink]="['/detail-info']" (click)="pushDataInService(detail.id)">
                         <h1>Подробнее</h1>
                     </button>
                 </div>

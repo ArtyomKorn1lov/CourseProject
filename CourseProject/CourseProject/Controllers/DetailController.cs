@@ -26,33 +26,55 @@ namespace CourseProject.Controllers
         }
 
         [HttpGet("all")]
-        public List<DetailDto> GetAll()
+        public async Task<List<DetailDto>> GetAll()
         {
-            List<Detail> details = _detailService.GetAll();
-            if(details == null)
+            List<Detail> details = await _detailService.GetAll();
+            if (details == null)
             {
                 return new List<DetailDto>();
             }
-            return details.Select(d => DtoConverter.ConvertToDetailDto(d)).ToList();
+            return details.Select(d => DetailDtoConverter.ConvertToDetailDto(d)).ToList();
         }
 
         [HttpPost]
-        public IActionResult CreateDetail(DetailDto detailDto)
+        public async Task<IActionResult> CreateDetail(DetailDto detailDto)
         {
-            if(_detailService.Create(DtoConverter.CovertToDetailEntity(detailDto)))
+            if (await _detailService.Create(DetailDtoConverter.CovertToDetailEntity(detailDto)))
             {
-                _unitOfWork.Commit();
+                await _unitOfWork.Commit();
                 return Ok("success");
             }
             return BadRequest("error");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteDetail(int id)
+        public async Task<IActionResult> DeleteDetail(int id)
         {
-            if(_detailService.Delete(id))
+            if (await _detailService.Delete(id))
             {
-                _unitOfWork.Commit();
+                await _unitOfWork.Commit();
+                return Ok("success");
+            }
+            return BadRequest("error");
+        }
+
+        [HttpGet("{id}")]
+        public async Task<DetailDto> GetDetailById(int id)
+        {
+            Detail detail = await _detailService.GetById(id);
+            if(detail == null)
+            {
+                return new DetailDto();
+            }
+            return DetailDtoConverter.ConvertToDetailDto(detail);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateDetail(DetailDto detail)
+        {
+            if (await _detailService.Update(DetailDtoConverter.CovertToDetailEntity(detail)))
+            {
+                await _unitOfWork.Commit();
                 return Ok("success");
             }
             return BadRequest("error");

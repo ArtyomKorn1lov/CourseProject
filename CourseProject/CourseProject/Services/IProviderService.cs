@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CourseProject
+namespace CourseProject.Services
 {
-    public interface IUnitOfWork
+    interface IProviderService
     {
-        Task Commit();
     }
 }

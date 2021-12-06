@@ -9,8 +9,18 @@ import { CreateDetailDto } from '../dto/CreateDetailDto';
 })
 export class DetailService {
   private commonUrl: string = 'api/detail';
+  
+  private id: number = 0;
 
   constructor(private http: HttpClient) { }
+
+  public pushInService(id: number): void {
+    this.id = id;
+  }
+
+  public getFromService(): number {
+    return this.id;
+  }
 
   getDetails(): Observable<Detail[]>{
     return this.http.get<Detail[]>(`${this.commonUrl}/all`);
@@ -22,5 +32,13 @@ export class DetailService {
 
   deleteDetail(id: number): Observable<object>{
     return this.http.delete<Detail>(`${this.commonUrl}/${id}`);
+  }
+
+  getDetailById(id: number): Observable<Detail>{
+    return this.http.get<Detail>(`${this.commonUrl}/${id}`);
+  }
+
+  updateDetail(detail: Detail): Observable<object>{
+    return this.http.put<Detail>(`${this.commonUrl}`, detail);
   }
 }

@@ -14,9 +14,9 @@ namespace CourseProject
             _autoDbContext = autoDbContext;
         }
 
-        public void Commit()
+        public async Task Commit()
         {
-            _autoDbContext.SaveChanges();
+            await _autoDbContext.SaveChangesAsync();
         }
     }
 }
