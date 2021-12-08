@@ -12,5 +12,12 @@ namespace CourseProject.Entity
         public string Address { get; set; }
         public string Phone { get; set; }
         public List<Delivery> Deliverys { get; set; }
+
+        public void CopyFrom(Provider provider)
+        {
+            Name = provider.Name;
+            Address = provider.Address;
+            Phone = provider.Phone;
+        }
     }
 }

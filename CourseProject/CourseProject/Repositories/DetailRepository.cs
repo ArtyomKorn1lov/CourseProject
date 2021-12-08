@@ -23,7 +23,7 @@ namespace CourseProject.Repositories
 
         public async Task Delete(int id)
         {
-            Detail detail = await _autoDbContext.Set<Detail>().FirstOrDefaultAsync(d => d.Id == id);
+            Detail detail = await GetById(id);
             if (detail != null)
                 _autoDbContext.Set<Detail>().Remove(detail);
         }

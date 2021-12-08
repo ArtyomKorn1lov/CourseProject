@@ -23,7 +23,7 @@ namespace CourseProject.Converters
                 Phone = provider.Phone,
             };
         }
-        public static Provider CovertToDetailEntity(ProviderDto provider)
+        public static Provider CovertToProviderEntity(ProviderDto provider)
         {
             if (provider == null)
             {

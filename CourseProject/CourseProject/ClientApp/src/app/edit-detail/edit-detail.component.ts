@@ -12,31 +12,23 @@ import { DetailService } from '../services/detail.service';
 export class EditDetailComponent implements OnInit {
 
   public detail!: Detail;
-  /*public name: string = "";
-  public article: number = 0;
-  public price: number = 0;
-  public note: string = "";*/
   private targetRoute: string = '/detail-info';
 
   constructor(private router: Router, private detailService: DetailService) { }
 
   UpdateDetail(): void {
-    /*if (this.name == null) {
+    if (this.detail.name == null) {
       alert("Введите имя пользователя");
       return;
     }
-    if (this.article == null) {
+    if (this.detail.articleNumber == null) {
       alert("Введите артикль");
       return;
     }
-    if (this.price == null) {
+    if (this.detail.price == null) {
       alert("Введите цену");
       return;
     }
-    this.detail.name = this.name;
-    this.detail.articleNumber = this.article;
-    this.detail.price = this.price;
-    this.detail.note = this.note;*/
     this.detailService.updateDetail(this.detail).subscribe(x => console.log(x));
     this.router.navigateByUrl(this.targetRoute);
   }
@@ -45,17 +37,8 @@ export class EditDetailComponent implements OnInit {
     this.detailService.deleteDetail(id).subscribe(x => console.log(x));
   }
 
-  /*fillForm(): void
-  {
-    this.name = this.detail.name;
-    this.article = this.detail.articleNumber;
-    this.price = this.detail.price;
-    if(this.detail.note != null) this.note = this.detail.note;
-  }*/
-
   ngOnInit(): void {
     this.detailService.getDetailById(this.detailService.getFromService()).subscribe(data => this.detail = data);
-    //this.fillForm();
   }
 
 }

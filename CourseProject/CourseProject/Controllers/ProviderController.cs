@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CourseProject.Converters;
+using CourseProject.Dto;
+using CourseProject.Entity;
+using CourseProject.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,81 +11,72 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Controllers
 {
+    [ApiController]
+    [Route("api/Provider")]
     public class ProviderController : Controller
     {
-        // GET: ProviderController
-        public ActionResult Index()
+        private IUnitOfWork _unitOfWork;
+        private IProviderService _providerService;
+
+        public ProviderController(IUnitOfWork unitOfWork, IProviderService providerService)
         {
-            return View();
+            _unitOfWork = unitOfWork;
+            _providerService = providerService;
         }
 
-        // GET: ProviderController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("all")]
+        public async Task<List<ProviderDto>> GetAll()
         {
-            return View();
+            List<Provider> providers = await _providerService.GetAll();
+            if (providers == null)
+            {
+                return new List<ProviderDto>();
+            }
+            return providers.Select(d => ProviderDtoConverter.ConvertToProviderDto(d)).ToList();
         }
 
-        // GET: ProviderController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ProviderController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> CreateDetail(ProviderDto providerDto)
         {
-            try
+            if (await _providerService.Create(ProviderDtoConverter.CovertToProviderEntity(providerDto)))
             {
-                return RedirectToAction(nameof(Index));
+                await _unitOfWork.Commit();
+                return Ok("success");
             }
-            catch
-            {
-                return View();
-            }
+            return BadRequest("error");
         }
 
-        // GET: ProviderController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDetail(int id)
         {
-            return View();
+            if (await _providerService.Delete(id))
+            {
+                await _unitOfWork.Commit();
+                return Ok("success");
+            }
+            return BadRequest("error");
         }
 
-        // POST: ProviderController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet("{id}")]
+        public async Task<ProviderDto> GetDetailById(int id)
         {
-            try
+            Provider provider = await _providerService.GetById(id);
+            if (provider == null)
             {
-                return RedirectToAction(nameof(Index));
+                return new ProviderDto();
             }
-            catch
-            {
-                return View();
-            }
+            return ProviderDtoConverter.ConvertToProviderDto(provider);
         }
 
-        // GET: ProviderController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPut]
+        public async Task<IActionResult> UpdateDetail(ProviderDto provider)
         {
-            return View();
-        }
-
-        // POST: ProviderController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            if (await _providerService.Update(ProviderDtoConverter.CovertToProviderEntity(provider)))
             {
-                return RedirectToAction(nameof(Index));
+                await _unitOfWork.Commit();
+                return Ok("success");
             }
-            catch
-            {
-                return View();
-            }
+            return BadRequest("error");
         }
     }
 }

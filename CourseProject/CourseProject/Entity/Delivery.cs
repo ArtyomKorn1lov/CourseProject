@@ -11,6 +11,11 @@ namespace CourseProject.Entity
         public int DetailId { get; set; }
         public int Count { get; set; }
         public DateTime Date { get; set; }
-        public int Price { get; set; }    
+        public int Price { get; set; }
+
+        public void CopyFrom(Delivery delivery)
+        {
+
+        }
     }
 }
