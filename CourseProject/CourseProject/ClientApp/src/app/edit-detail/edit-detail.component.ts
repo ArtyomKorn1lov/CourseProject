@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CreateDetailDto } from '../dto/CreateDetailDto';
 import { Detail } from '../dto/detail';
 import { DetailService } from '../services/detail.service';
 
@@ -18,7 +17,7 @@ export class EditDetailComponent implements OnInit {
 
   UpdateDetail(): void {
     if (this.detail.name == null) {
-      alert("Введите имя пользователя");
+      alert("Введите наименование товара");
       return;
     }
     if (this.detail.articleNumber == null) {

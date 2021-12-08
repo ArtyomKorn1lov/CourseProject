@@ -8,8 +8,8 @@ import { CreateDetailDto } from '../dto/CreateDetailDto';
   providedIn: 'root'
 })
 export class DetailService {
-  private commonUrl: string = 'api/detail';
   
+  private commonUrl: string = 'api/detail';
   private id: number = 0;
 
   constructor(private http: HttpClient) { }

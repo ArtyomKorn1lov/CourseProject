@@ -20,7 +20,7 @@ export class CreateDetailComponent implements OnInit {
 
   CreateDetail(): void {
     if (this.name == null) {
-      alert("Введите имя пользователя");
+      alert("Введите наименование товара");
       return;
     }
     if (this.article == null) {

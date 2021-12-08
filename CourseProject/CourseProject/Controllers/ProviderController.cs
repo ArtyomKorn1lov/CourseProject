@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace CourseProject.Controllers
 {
     [ApiController]
-    [Route("api/Provider")]
+    [Route("api/provider")]
     public class ProviderController : Controller
     {
         private IUnitOfWork _unitOfWork;

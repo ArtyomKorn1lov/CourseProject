@@ -21,6 +21,10 @@ import { DetailListComponent } from './detail-list/detail-list.component';
 import { CreateDetailComponent } from './create-detail/create-detail.component';
 import { DetailInfoComponent } from './detail-info/detail-info.component';
 import { EditDetailComponent } from './edit-detail/edit-detail.component';
+import { ProviderListComponent } from './provider-list/provider-list.component';
+import { ProviderInfoComponent } from './provider-info/provider-info.component';
+import { CreateProviderComponent } from './create-provider/create-provider.component';
+import { EditProviderComponent } from './edit-provider/edit-provider.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { EditDetailComponent } from './edit-detail/edit-detail.component';
     CreateDetailComponent,
     DetailInfoComponent,
     EditDetailComponent,
+    ProviderListComponent,
+    ProviderInfoComponent,
+    CreateProviderComponent,
+    EditProviderComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +60,10 @@ import { EditDetailComponent } from './edit-detail/edit-detail.component';
       { path: 'create-detail', component: CreateDetailComponent },
       { path: 'detail-info', component: DetailInfoComponent },
       { path: 'edit-detail', component: EditDetailComponent },
+      { path: 'provider-list', component: ProviderListComponent},
+      { path: 'provider-info', component: ProviderInfoComponent},
+      { path: 'create-provider', component: CreateProviderComponent},
+      { path: 'edit-provider', component: EditProviderComponent},
       { path: 'orders', component: OrdersComponent },
     ]),
     BrowserAnimationsModule,
