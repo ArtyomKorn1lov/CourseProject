@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CourseProject.Converters;
+using CourseProject.Dto;
+using CourseProject.Entity;
+using CourseProject.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,81 +11,72 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Controllers
 {
+    [ApiController]
+    [Route("api/delivery")]
     public class DeliveryController : Controller
     {
-        // GET: DeliveryController
-        public ActionResult Index()
+        private IUnitOfWork _unitOfWork;
+        private IDeliveryService _deliveryService;
+
+        public DeliveryController(IUnitOfWork unitOfWork, IDeliveryService deliveryService)
         {
-            return View();
+            _unitOfWork = unitOfWork;
+            _deliveryService = deliveryService;
         }
 
-        // GET: DeliveryController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("all")]
+        public async Task<List<DeliveryDto>> GetAll()
         {
-            return View();
+            List<Delivery> deliveries = await _deliveryService.GetAll();
+            if (deliveries == null)
+            {
+                return new List<DeliveryDto>();
+            }
+            return deliveries.Select(d => DeliveryDtoConverter.ConvertToDeliveryDto(d)).ToList();
         }
 
-        // GET: DeliveryController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DeliveryController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> CreateDelivery(DeliveryDto deliveryDto)
         {
-            try
+            if (await _deliveryService.Create(DeliveryDtoConverter.CovertToDeliveryEntity(deliveryDto)))
             {
-                return RedirectToAction(nameof(Index));
+                await _unitOfWork.Commit();
+                return Ok("success");
             }
-            catch
-            {
-                return View();
-            }
+            return BadRequest("error");
         }
 
-        // GET: DeliveryController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDelivery(int detailId, int providerId)
         {
-            return View();
+            if (await _deliveryService.Delete(detailId, providerId))
+            {
+                await _unitOfWork.Commit();
+                return Ok("success");
+            }
+            return BadRequest("error");
         }
 
-        // POST: DeliveryController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet("{id}")]
+        public async Task<DeliveryDto> GetDeliveryById(int detailId, int providerId)
         {
-            try
+            Delivery delivery = await _deliveryService.GetById(detailId, providerId);
+            if (delivery == null)
             {
-                return RedirectToAction(nameof(Index));
+                return new DeliveryDto();
             }
-            catch
-            {
-                return View();
-            }
+            return DeliveryDtoConverter.ConvertToDeliveryDto(delivery);
         }
 
-        // GET: DeliveryController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPut]
+        public async Task<IActionResult> UpdateDelivery(DeliveryDto delivery)
         {
-            return View();
-        }
-
-        // POST: DeliveryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            if (await _deliveryService.Update(DeliveryDtoConverter.CovertToDeliveryEntity(delivery)))
             {
-                return RedirectToAction(nameof(Index));
+                await _unitOfWork.Commit();
+                return Ok("success");
             }
-            catch
-            {
-                return View();
-            }
+            return BadRequest("error");
         }
     }
 }

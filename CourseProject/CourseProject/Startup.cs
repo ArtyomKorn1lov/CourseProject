@@ -28,8 +28,10 @@ namespace CourseProject
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDetailService, DetailService>();
             services.AddScoped<IProviderService, ProviderService>();
+            services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IDetailRepository, DetailRepository>();
             services.AddScoped<IProviderRepository, ProviderRepository>();
+            services.AddScoped<IDeliveryRepository, DeliveryRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
