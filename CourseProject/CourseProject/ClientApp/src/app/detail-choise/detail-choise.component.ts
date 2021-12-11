@@ -3,11 +3,11 @@ import { Detail } from '../dto/detail';
 import { DetailService } from '../services/detail.service';
 
 @Component({
-  selector: 'app-detail-list',
-  templateUrl: './detail-list.component.html',
-  styleUrls: ['./detail-list.component.css']
+  selector: 'app-detail-choise',
+  templateUrl: './detail-choise.component.html',
+  styleUrls: ['./detail-choise.component.css']
 })
-export class DetailListComponent implements OnInit {
+export class DetailChoiseComponent implements OnInit {
 
   public details: Detail[] = [];
 

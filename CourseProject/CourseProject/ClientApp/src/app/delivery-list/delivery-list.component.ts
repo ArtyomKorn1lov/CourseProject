@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Delivery } from '../dto/delivery';
+import { DeliveryService } from '../services/delivery.service';
 
 @Component({
   selector: 'app-delivery-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeliveryListComponent implements OnInit {
 
-  constructor() { }
+  public deliveries: Delivery[] = [];
 
-  ngOnInit(): void {
+  constructor(private deliveryService: DeliveryService) { }
+
+  clearDeliverySessionStorage(): void{
+    sessionStorage.setItem('DeliveryCreateDetailKey', '');
+    sessionStorage.setItem('DeliveryCreateProviderKey', '');
   }
 
+  getDeliveries(): void{
+    this.deliveryService.getDeliveries().subscribe(data => this.deliveries = data);
+  }
+
+  pushDataInService(providerId: number, detailId: number): void {
+    this.deliveryService.pushInService(providerId, detailId);
+  }
+
+  ngOnInit(): void {
+    this.clearDeliverySessionStorage();
+    this.getDeliveries();
+  }
 }

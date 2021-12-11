@@ -1,3 +1,59 @@
 <div class="page-selection">
-
+    <div class="head-block">
+        <h2>Список поставок</h2>
+    </div>
+    <div class="controll-button-block">
+        <button class="fisrt-variation-bar" [routerLink]="['/orders']">
+            <h1>Назад</h1>
+        </button>
+        <button class="second-variation-bar" [routerLink]="['/create-delivery']">
+            <h1>Добавить поставку</h1> 
+        </button>
+    </div>
+    <div class="object-location">
+        <div class="object">
+            <div class="element">
+                <p>Id поставщика</p>
+            </div>
+            <div class="element">
+                <p>Id детали</p>
+            </div>
+            <div class="element">
+                <p>Количество товара</p>
+            </div>
+            <div class="element">
+                <p>Дата поставки</p>
+            </div>
+            <div class="element">
+                <p>Цена поставки</p>
+            </div>
+            <div class="element">
+                <p>Навигация</p>
+            </div>
+        </div>
+        <div class="object-list" *ngFor="let delivery of deliveries">
+            <div class="object">
+                <div class="element">
+                    <p>{{delivery.providerId}}</p>
+                </div>
+                <div class="element">
+                    <p>{{delivery.detailId}}</p>
+                </div>
+                <div class="element">
+                    <p>{{delivery.count}}</p>
+                </div>
+                <div class="element">
+                    <p>{{delivery.date}}</p>
+                </div>
+                <div class="element">
+                    <p>{{delivery.price}}</p>
+                </div>
+                <div class="element-button">
+                    <button class="object-button" [routerLink]="['/detail-info']" (click)="pushDataInService(delivery.providerId, delivery.detailId)">
+                        <h1>Подробнее</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

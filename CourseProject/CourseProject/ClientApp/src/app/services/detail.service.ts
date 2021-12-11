@@ -10,16 +10,21 @@ import { CreateDetailDto } from '../dto/CreateDetailDto';
 export class DetailService {
   
   private commonUrl: string = 'api/detail';
-  private id: number = 0;
 
   constructor(private http: HttpClient) { }
 
   public pushInService(id: number): void {
-    this.id = id;
+    sessionStorage.setItem('DetailKey', id.toString());
   }
 
   public getFromService(): number {
-    return this.id;
+    var key = sessionStorage.getItem('DetailKey');
+    if(key == null)
+    {
+      return 0;
+    }
+    var currentId = parseInt(key);
+    return currentId;
   }
 
   getDetails(): Observable<Detail[]>{

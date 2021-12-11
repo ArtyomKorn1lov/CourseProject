@@ -14,7 +14,7 @@ namespace CourseProject.Configurations
         {
             builder.ToTable(nameof(Delivery));
 
-            builder.HasKey(d => new { d.ProviderId, d.DetailId });
+            builder.HasKey(d => d.Id);
 
             builder.Property(d => d.Count).IsRequired();
             builder.Property(d => d.Date).IsRequired();

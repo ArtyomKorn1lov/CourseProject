@@ -25,6 +25,10 @@ import { ProviderListComponent } from './provider-list/provider-list.component';
 import { ProviderInfoComponent } from './provider-info/provider-info.component';
 import { CreateProviderComponent } from './create-provider/create-provider.component';
 import { EditProviderComponent } from './edit-provider/edit-provider.component';
+import { DetailChoiseComponent } from './detail-choise/detail-choise.component';
+import { DetailChoiseInfoComponent } from './detail-choise-info/detail-choise-info.component';
+import { ProviderChoiseComponent } from './provider-choise/provider-choise.component';
+import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-choise-info.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { EditProviderComponent } from './edit-provider/edit-provider.component';
     ProviderInfoComponent,
     CreateProviderComponent,
     EditProviderComponent,
+    DetailChoiseComponent,
+    DetailChoiseInfoComponent,
+    ProviderChoiseComponent,
+    ProviderChoiseInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +64,11 @@ import { EditProviderComponent } from './edit-provider/edit-provider.component';
     RouterModule.forRoot([
       { path: '', component: MainpageComponent },
       { path: 'delivery-list', component: DeliveryListComponent },
+      { path: 'create-delivery', component: CreateDeliveryComponent },
+      { path: 'detail-choise', component: DetailChoiseComponent },
+      { path: 'detail-choise-info', component: DetailChoiseInfoComponent },
+      { path: 'provider-choise', component: ProviderChoiseComponent },
+      { path: 'provider-choise-info', component: ProviderChoiseInfoComponent },
       { path: 'detail-list', component: DetailListComponent },
       { path: 'create-detail', component: CreateDetailComponent },
       { path: 'detail-info', component: DetailInfoComponent },

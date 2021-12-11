@@ -17,6 +17,7 @@ namespace CourseProject.Converters
             }
             return new DeliveryDto
             {
+                Id = delivery.Id,
                 ProviderId = delivery.ProviderId,
                 DetailId = delivery.DetailId,
                 Count = delivery.Count,
@@ -32,6 +33,7 @@ namespace CourseProject.Converters
             }
             return new Delivery
             {
+                Id = delivery.Id,
                 ProviderId = delivery.ProviderId,
                 DetailId = delivery.DetailId,
                 Count = delivery.Count,

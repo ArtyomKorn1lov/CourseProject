@@ -7,6 +7,7 @@ namespace CourseProject.Dto
 {
     public class DeliveryDto
     {
+        public int Id { get; set; }
         public int ProviderId { get; set; }
         public int DetailId { get; set; }
         public int Count { get; set; }

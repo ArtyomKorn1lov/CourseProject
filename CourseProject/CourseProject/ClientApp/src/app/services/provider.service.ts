@@ -15,11 +15,17 @@ export class ProviderService {
   constructor(private http: HttpClient) { }
 
   public pushInService(id: number): void {
-    this.id = id;
+    sessionStorage.setItem('ProviderKey', id.toString());
   }
 
   public getFromService(): number {
-    return this.id;
+    var key = sessionStorage.getItem('ProviderKey');
+    if(key == null)
+    {
+      return 0;
+    }
+    var currentId = parseInt(key);
+    return currentId;
   }
 
   getProviders(): Observable<Provider[]>{
