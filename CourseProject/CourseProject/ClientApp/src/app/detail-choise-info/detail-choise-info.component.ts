@@ -11,14 +11,20 @@ import { DetailService } from '../services/detail.service';
 })
 export class DetailChoiseInfoComponent implements OnInit {
 
-  private targetRoute: string = '/create-delivery';
+  private createDetailRoute: string = '/create-delivery';
+  private updateDetailRoute: string = '/edit-delivery';
   public detail!: Detail;
 
   constructor(private router: Router, private detailService: DetailService, private deliveryService: DeliveryService) { }
 
   choiseDetail(id: number): void {
     this.deliveryService.pushChoiseDetailId(id);
-    this.router.navigateByUrl(this.targetRoute);
+    if(sessionStorage.getItem('DeliveryPage') == 'create')
+    {
+      this.router.navigateByUrl(this.createDetailRoute);
+      return;
+    }
+    this.router.navigateByUrl(this.updateDetailRoute);
   }
 
   ngOnInit(): void {

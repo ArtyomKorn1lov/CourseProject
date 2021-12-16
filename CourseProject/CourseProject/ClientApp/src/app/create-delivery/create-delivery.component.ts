@@ -17,7 +17,6 @@ export class CreateDeliveryComponent implements OnInit {
   detailId: number | undefined;
   providerId: number | undefined;
   count: number | undefined;
-  private targetRoute: string = '/delivery-list';
   public provider!: Provider;
   public detail!: Detail;
 
@@ -40,7 +39,13 @@ export class CreateDeliveryComponent implements OnInit {
   }
 
   detailClick(): void{
+    sessionStorage.setItem('DeliveryPage', 'create');
     this.router.navigateByUrl('/detail-choise');
+  }
+
+  providerClick(): void{
+    sessionStorage.setItem('DeliveryPage', 'create');
+    this.router.navigateByUrl('/provider-choise');
   }
 
   createDelivery(): void {
@@ -57,13 +62,15 @@ export class CreateDeliveryComponent implements OnInit {
       return;
     }
     var date = new Date();
-    var delivery = new CreateDeliveryDto(this.providerId, this.detailId, this.count, date, this.detail.price);
+    var delivery = new CreateDeliveryDto(this.providerId, this.detailId, this.count, date, this.detail.price*this.count);
     this.deliveryService.createDelivery(delivery).subscribe(x => console.log(x));
+    this.router.navigateByUrl('/delivery-list');
   }
 
   ngOnInit() {
     this.getDetail();
     this.getProvider();
+    sessionStorage.setItem('DetailPage', '');
   }
 
 }

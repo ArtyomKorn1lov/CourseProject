@@ -9,9 +9,9 @@ namespace CourseProject.Repositories
     public interface IDeliveryRepository
     {
         Task<List<Delivery>> GetAll();
-        Task<Delivery> GetById(int detailId, int providerId);
+        Task<Delivery> GetById(int id);
         Task Create(Delivery delivery);
         Task Update(Delivery delivery);
-        Task Delete(int detailId, int providerId);
+        Task Delete(int id);
     }
 }

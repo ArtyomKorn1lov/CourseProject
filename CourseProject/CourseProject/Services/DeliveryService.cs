@@ -30,11 +30,11 @@ namespace CourseProject.Services
             }
         }
 
-        public async Task<bool> Delete(int detailId, int providerId)
+        public async Task<bool> Delete(int id)
         {
             try
             {
-                await _deliveryRepository.Delete(detailId, providerId);
+                await _deliveryRepository.Delete(id);
                 return true;
             }
             catch
@@ -48,9 +48,9 @@ namespace CourseProject.Services
             return await _deliveryRepository.GetAll();
         }
 
-        public async Task<Delivery> GetById(int detailId, int providerId)
+        public async Task<Delivery> GetById(int id)
         {
-            return await _deliveryRepository.GetById(detailId, providerId);
+            return await _deliveryRepository.GetById(id);
         }
 
         public async Task<bool> Update(Delivery delivery)

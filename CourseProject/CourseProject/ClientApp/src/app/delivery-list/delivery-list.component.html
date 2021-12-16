@@ -49,7 +49,7 @@
                     <p>{{delivery.price}}</p>
                 </div>
                 <div class="element-button">
-                    <button class="object-button" [routerLink]="['/detail-info']" (click)="pushDataInService(delivery.providerId, delivery.detailId)">
+                    <button class="object-button" [routerLink]="['/delivery-info']" (click)="pushDataInService(delivery.id, delivery.providerId, delivery.detailId)">
                         <h1>Подробнее</h1>
                     </button>
                 </div>

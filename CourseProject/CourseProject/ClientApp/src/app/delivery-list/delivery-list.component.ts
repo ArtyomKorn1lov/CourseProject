@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Delivery } from '../dto/delivery';
+import { Detail } from '../dto/detail';
 import { DeliveryService } from '../services/delivery.service';
+import { DetailService } from '../services/detail.service';
 
 @Component({
   selector: 'app-delivery-list',
@@ -10,20 +12,20 @@ import { DeliveryService } from '../services/delivery.service';
 export class DeliveryListComponent implements OnInit {
 
   public deliveries: Delivery[] = [];
+  public details: Detail[] = [];
 
-  constructor(private deliveryService: DeliveryService) { }
+  constructor(private deliveryService: DeliveryService, private detailService: DetailService) { }
 
   clearDeliverySessionStorage(): void{
-    sessionStorage.setItem('DeliveryCreateDetailKey', '');
-    sessionStorage.setItem('DeliveryCreateProviderKey', '');
+    this.deliveryService.clearSessionStorage();
   }
 
   getDeliveries(): void{
     this.deliveryService.getDeliveries().subscribe(data => this.deliveries = data);
   }
 
-  pushDataInService(providerId: number, detailId: number): void {
-    this.deliveryService.pushInService(providerId, detailId);
+  pushDataInService(id: number, providerId: number, detailId: number): void {
+    this.deliveryService.pushInService(id, providerId, detailId);
   }
 
   ngOnInit(): void {

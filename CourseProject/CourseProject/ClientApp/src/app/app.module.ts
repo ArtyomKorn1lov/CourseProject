@@ -29,6 +29,8 @@ import { DetailChoiseComponent } from './detail-choise/detail-choise.component';
 import { DetailChoiseInfoComponent } from './detail-choise-info/detail-choise-info.component';
 import { ProviderChoiseComponent } from './provider-choise/provider-choise.component';
 import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-choise-info.component';
+import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
+import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-cho
     DetailChoiseInfoComponent,
     ProviderChoiseComponent,
     ProviderChoiseInfoComponent,
+    DeliveryInfoComponent,
+    EditDeliveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,8 @@ import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-cho
       { path: '', component: MainpageComponent },
       { path: 'delivery-list', component: DeliveryListComponent },
       { path: 'create-delivery', component: CreateDeliveryComponent },
+      { path: 'delivery-info', component: DeliveryInfoComponent },
+      { path: 'edit-delivery', component: EditDeliveryComponent },
       { path: 'detail-choise', component: DetailChoiseComponent },
       { path: 'detail-choise-info', component: DetailChoiseInfoComponent },
       { path: 'provider-choise', component: ProviderChoiseComponent },

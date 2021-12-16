@@ -15,11 +15,6 @@ export class DetailInfoComponent implements OnInit {
 
   constructor(private router: Router, private detailService: DetailService) { }
 
-  deleteDetail(id: number): void {
-    this.detailService.deleteDetail(id).subscribe(x => console.log(x));
-    this.router.navigateByUrl(this.targetRoute);
-  }
-
   ngOnInit(): void {
     this.detailService.getDetailById(this.detailService.getFromService()).subscribe(data => this.detail = data);
   }

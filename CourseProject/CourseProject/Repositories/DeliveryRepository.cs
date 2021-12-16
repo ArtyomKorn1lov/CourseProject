@@ -21,9 +21,9 @@ namespace CourseProject.Repositories
             await _autoDbContext.Set<Delivery>().AddAsync(delivery);
         }
 
-        public async Task Delete(int detailId, int providerId)
+        public async Task Delete(int id)
         {
-            Delivery delivery = await GetById(detailId, providerId);
+            Delivery delivery = await GetById(id);
             if (delivery != null)
                 _autoDbContext.Set<Delivery>().Remove(delivery);
         }
@@ -33,14 +33,14 @@ namespace CourseProject.Repositories
             return await _autoDbContext.Set<Delivery>().ToListAsync();
         }
 
-        public async Task<Delivery> GetById(int detailId, int providerId)
+        public async Task<Delivery> GetById(int id)
         {
-            return await _autoDbContext.Set<Delivery>().FirstOrDefaultAsync(d => d.DetailId == detailId && d.ProviderId == providerId);
+            return await _autoDbContext.Set<Delivery>().FirstOrDefaultAsync(d => d.Id == id);
         }
 
         public async Task Update(Delivery delivery)
         {
-            Delivery _delivery = await GetById(delivery.DetailId, delivery.ProviderId);
+            Delivery _delivery = await GetById(delivery.Id);
             _delivery.CopyFrom(delivery);
         }
     }

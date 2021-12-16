@@ -1,19 +1,22 @@
 <div class="page-selection">
     <div class="head-block">
-        <h2>Добавить новую поставку</h2>
+        <h2>Изменить текущую поставку</h2>
     </div>
     <div class="controll-button-block">
-        <button class="fisrt-variation-bar" [routerLink]="['/delivery-list']">
+        <button class="fisrt-variation-bar" [routerLink]="['/delivery-info']">
             <h1>Назад</h1>
         </button>
-        <button class="second-variation-bar" (click)="createDelivery()">
-            <h1>Добавить</h1> 
+        <button class="fisrt-variation-bar" (click)="deleteDelivery()">
+            <h1>Удалить</h1>
+        </button>
+        <button class="second-variation-bar" (click)="editDelivery()">
+            <h1>Редактировать</h1> 
         </button>
     </div>
     <div class="frame-form">
         <div class="input-form">
             <div class="form-block">
-                <h1>Добавить поставщика:</h1>
+                <h1>Изменить поставщика:</h1>
             </div>
             <div class="form-block">
                 <button class="second-variation-bar" (click)="providerClick()">
@@ -31,7 +34,7 @@
         </div>
         <div class="input-form">
             <div class="form-block">
-                <h1>Добавить деталь:</h1>
+                <h1>Изменить деталь:</h1>
             </div>
             <div class="form-block">
                 <button class="second-variation-bar" (click)="detailClick()">
@@ -41,7 +44,7 @@
         </div>
         <div class="input-form">
             <div class="form-block">
-                <h1>Добавить деталь:</h1>
+                <h1>Деталь:</h1>
             </div>
             <div class="form-block">
                 <h1>{{detail.name}}</h1>
@@ -52,7 +55,7 @@
                 <h1>Количество деталей:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="count" class="auth-input" type="number" placeholder="Введите количество">
+                <input [(ngModel)]="delivery.count" class="auth-input" type="number" placeholder="Введите количество">
             </div>
         </div>
     </div>

@@ -14,12 +14,7 @@ export class ProviderInfoComponent implements OnInit {
   public provider!: Provider;
 
   constructor(private router: Router, private providerService: ProviderService) { }
-
-  deleteProvider(id: number): void {
-    this.providerService.deleteProvider(id).subscribe(x => console.log(x));
-    this.router.navigateByUrl(this.targetRoute);
-  }
-
+  
   ngOnInit(): void {
     this.providerService.getProviderById(this.providerService.getFromService()).subscribe(data => this.provider = data);
   }

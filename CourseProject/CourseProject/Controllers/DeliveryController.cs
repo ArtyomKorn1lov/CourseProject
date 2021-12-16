@@ -47,9 +47,9 @@ namespace CourseProject.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDelivery(int detailId, int providerId)
+        public async Task<IActionResult> DeleteDelivery(int id)
         {
-            if (await _deliveryService.Delete(detailId, providerId))
+            if (await _deliveryService.Delete(id))
             {
                 await _unitOfWork.Commit();
                 return Ok("success");
@@ -58,9 +58,9 @@ namespace CourseProject.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<DeliveryDto> GetDeliveryById(int detailId, int providerId)
+        public async Task<DeliveryDto> GetDeliveryById(int id)
         {
-            Delivery delivery = await _deliveryService.GetById(detailId, providerId);
+            Delivery delivery = await _deliveryService.GetById(id);
             if (delivery == null)
             {
                 return new DeliveryDto();

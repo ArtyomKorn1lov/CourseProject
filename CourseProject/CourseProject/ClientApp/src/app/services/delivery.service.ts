@@ -13,29 +13,49 @@ export class DeliveryService {
 
   constructor(private http: HttpClient) { }
 
-  public pushInService(providerId: number, detailId: number): void {
-    sessionStorage.setItem('DeliveryProviderKey', providerId.toString());
-    sessionStorage.setItem('DeliveryDetailKey', detailId.toString());
+  public clearSessionStorage(): void{
+    sessionStorage.setItem('DeliveryCreateDetailKey', '');
+    sessionStorage.setItem('DeliveryCreateProviderKey', '');
+    sessionStorage.setItem('DeliveryIdKey', '');
+    sessionStorage.setItem('DeliveryDetailIdKey', '');
+    sessionStorage.setItem('DeliveryProviderIdKey', '');
+    sessionStorage.setItem('DeliveryPage', '');
   }
 
-  public getProviderIdFromService(): number {
-    var providerKey = sessionStorage.getItem('DeliveryProviderKey');
-    if(providerKey == null)
+  public pushInService(id: number, providerId: number , detailId: number): void {
+    sessionStorage.setItem('DeliveryIdKey', id.toString());
+    sessionStorage.setItem('DeliveryDetailIdKey', detailId.toString());
+    sessionStorage.setItem('DeliveryProviderIdKey', providerId.toString());
+  }
+
+  public getDeliveryIdFromService(): number {
+    var currentKey = sessionStorage.getItem('DeliveryIdKey');
+    if(currentKey == null)
     {
       return -1;
     }
-    var currentProviderId = parseInt(providerKey);
-    return currentProviderId;
+    var currentId = parseInt(currentKey);
+    return currentId;
   }
 
-  public getDetailIdFromService(): number {
-    var detailKey = sessionStorage.getItem('DeliveryDetailKey');
-    if(detailKey == null)
+  public getDeliveryProviderIdFromService(): number {
+    var currentKey = sessionStorage.getItem('DeliveryProviderIdKey');
+    if(currentKey == null)
     {
       return -1;
     }
-    var currentDetailId = parseInt(detailKey);
-    return currentDetailId;    
+    var currentId = parseInt(currentKey);
+    return currentId;
+  }
+
+  public getDeliveryDetailIdFromService(): number {
+    var currentKey = sessionStorage.getItem('DeliveryDetailIdKey');
+    if(currentKey == null)
+    {
+      return -1;
+    }
+    var currentId = parseInt(currentKey);
+    return currentId;
   }
 
   public pushChoiseDetailId(id: number): void{
@@ -44,7 +64,7 @@ export class DeliveryService {
 
   public getChoiseDetailId(): number{
     var detailKey = sessionStorage.getItem('DeliveryCreateDetailKey');
-    if(detailKey == null)
+    if(detailKey == null || detailKey == '')
     {
       return -1;
     }
@@ -58,7 +78,7 @@ export class DeliveryService {
 
   public getChoiseProviderId(): number{
     var providerKey = sessionStorage.getItem('DeliveryCreateProviderKey');
-    if(providerKey == null)
+    if(providerKey == null || providerKey == '')
     {
       return -1;
     }

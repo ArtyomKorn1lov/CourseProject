@@ -9,9 +9,9 @@ namespace CourseProject.Services
     public interface IDeliveryService
     {
         Task<List<Delivery>> GetAll();
-        Task<Delivery> GetById(int detailId, int providerId);
+        Task<Delivery> GetById(int id);
         Task<bool> Create(Delivery delivery);
         Task<bool> Update(Delivery delivery);
-        Task<bool> Delete(int detailId, int providerId);
+        Task<bool> Delete(int id);
     }
 }

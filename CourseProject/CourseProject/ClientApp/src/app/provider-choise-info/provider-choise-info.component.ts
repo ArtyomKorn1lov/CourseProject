@@ -11,14 +11,19 @@ import { DeliveryService } from '../services/delivery.service';
 })
 export class ProviderChoiseInfoComponent implements OnInit {
 
-  private targetRoute: string = '/create-delivery';
+  private createProviderRoute: string = '/create-delivery';
+  private updateProviderRoute: string = '/edit-delivery';
   public provider!: Provider;
 
   constructor(private router: Router, private providerService: ProviderService, private deliveryService: DeliveryService) { }
 
   choiseProvider(id: number): void{
     this.deliveryService.pushChoiseProviderId(id);
-    this.router.navigateByUrl(this.targetRoute);
+    if(sessionStorage.getItem('DeliveryPage') == 'create') {
+      this.router.navigateByUrl(this.createProviderRoute);
+      return;
+    }
+    this.router.navigateByUrl(this.updateProviderRoute);
   }
 
   ngOnInit(): void {

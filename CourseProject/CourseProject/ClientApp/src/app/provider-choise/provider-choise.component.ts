@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Provider } from '../dto/provider';
 import { ProviderService } from '../services/provider.service';
 
@@ -9,9 +10,20 @@ import { ProviderService } from '../services/provider.service';
 })
 export class ProviderChoiseComponent implements OnInit {
 
+  private createProviderRoute: string = '/create-delivery';
+  private updateProviderRoute: string = '/edit-delivery';
   public providers: Provider[] = [];
 
-  constructor(private providerService: ProviderService) { }
+  constructor(private router: Router, private providerService: ProviderService) { }
+
+  routerBack(): void{
+    if(sessionStorage.getItem('DeliveryPage') == 'create')
+    {
+      this.router.navigateByUrl(this.createProviderRoute);
+      return;
+    }
+    this.router.navigateByUrl(this.updateProviderRoute);
+  }
 
   getProviders(): void {
     this.providerService.getProviders().subscribe(data => this.providers = data);
