@@ -9,6 +9,7 @@ import { DetailService } from '../services/detail.service';
 })
 export class DetailListComponent implements OnInit {
 
+  search : string | undefined;
   public details: Detail[] = [];
 
   constructor(private detailService: DetailService) { }
@@ -19,6 +20,20 @@ export class DetailListComponent implements OnInit {
 
   pushDataInService(id: number): void {
     this.detailService.pushInService(id);
+  }
+
+  reloadList(): void {
+    this.search = '';
+    this.details = [];
+    this.getDetails(); 
+  }
+
+  getDetailsByName(): void {
+    if(this.search != undefined)
+    {
+      this.details = [];
+      this.detailService.getByName(this.search).subscribe(data => this.details = data);
+    }
   }
 
   ngOnInit(): void {

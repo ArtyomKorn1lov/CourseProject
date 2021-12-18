@@ -13,5 +13,7 @@ namespace CourseProject.Repositories
         Task Create(Delivery delivery);
         Task Update(Delivery delivery);
         Task Delete(int id);
+        Task<List<Delivery>> GetByDetailName(int id);
+        Task<List<Delivery>> GetByProviderName(int id);
     }
 }

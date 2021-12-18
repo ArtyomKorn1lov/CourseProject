@@ -45,12 +45,26 @@ namespace CourseProject.Services
 
         public async Task<List<Detail>> GetAll()
         {
-            return await _detailRepository.GetAll();
+            try
+            {
+                return await _detailRepository.GetAll();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<Detail> GetById(int id)
         {
-            return await _detailRepository.GetById(id);
+            try
+            {
+                return await _detailRepository.GetById(id);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<bool> Update(Detail detail)
@@ -63,6 +77,18 @@ namespace CourseProject.Services
             catch
             {
                 return false;
+            }
+        }
+
+        public async Task<List<Detail>> GetByName(string name)
+        {
+            try
+            {
+                return await _detailRepository.GetByName($"%{name}%");
+            }
+            catch
+            {
+                return null;
             }
         }
     }

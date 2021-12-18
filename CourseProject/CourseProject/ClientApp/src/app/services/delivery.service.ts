@@ -3,6 +3,7 @@ import { Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Delivery } from '../dto/delivery';
 import { CreateDeliveryDto } from '../dto/CreateDeliveryDto';
+import { DeliveryDtoInfo } from '../dto/DeliveryInfoDto';
 
 @Injectable({
   providedIn: 'root'
@@ -86,8 +87,8 @@ export class DeliveryService {
     return currentProviderId;
   }
 
-  getDeliveries(): Observable<Delivery[]>{
-    return this.http.get<Delivery[]>(`${this.commonUrl}/all`);
+  getDeliveries(): Observable<DeliveryDtoInfo[]>{
+    return this.http.get<DeliveryDtoInfo[]>(`${this.commonUrl}/all`);
   }
 
   createDelivery(delivery: CreateDeliveryDto): Observable<object>{
@@ -106,4 +107,11 @@ export class DeliveryService {
     return this.http.put<Delivery>(`${this.commonUrl}`, delivery);
   }
 
+  getByDetailName(name: string): Observable<DeliveryDtoInfo[]> {
+    return this.http.get<DeliveryDtoInfo[]>(`${this.commonUrl}/by-detail-name/${name}`);
+  }
+
+  getByProviderName(name: string): Observable<DeliveryDtoInfo[]> {
+    return this.http.get<DeliveryDtoInfo[]>(`${this.commonUrl}/by-provider-name/${name}`);
+  }
 }

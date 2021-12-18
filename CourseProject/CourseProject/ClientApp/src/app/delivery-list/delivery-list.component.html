@@ -10,13 +10,30 @@
             <h1>Добавить поставку</h1> 
         </button>
     </div>
+    <div class="controll-button-block">
+        <button class="fisrt-variation-bar" (click)="reloadList()">
+            <h1>Перезагрузить</h1>
+        </button>
+        <input [(ngModel)]="searchProvider" class="auth-input" type="text" placeholder="Найти по названию поставщика">
+        <button class="second-variation-bar" (click)="getDeliveriesByProviderName()">
+            <h1>Найти</h1>
+        </button>
+    </div>
+    <div class="controll-button-block">
+        <div class="mimic-bar">
+        </div>
+        <input [(ngModel)]="searchDetail" class="auth-input" type="text" placeholder="Найти по названию детали">
+        <button class="second-variation-bar" (click)="getDeliveriesByDetailName()">
+            <h1>Найти</h1> 
+        </button>
+    </div>
     <div class="object-location">
         <div class="object">
             <div class="element">
-                <p>Id поставщика</p>
+                <p>Поставщик</p>
             </div>
             <div class="element">
-                <p>Id детали</p>
+                <p>Деталь</p>
             </div>
             <div class="element">
                 <p>Количество товара</p>
@@ -34,10 +51,10 @@
         <div class="object-list" *ngFor="let delivery of deliveries">
             <div class="object">
                 <div class="element">
-                    <p>{{delivery.providerId}}</p>
+                    <p>{{delivery.providerName}}</p>
                 </div>
                 <div class="element">
-                    <p>{{delivery.detailId}}</p>
+                    <p>{{delivery.detailName}}</p>
                 </div>
                 <div class="element">
                     <p>{{delivery.count}}</p>

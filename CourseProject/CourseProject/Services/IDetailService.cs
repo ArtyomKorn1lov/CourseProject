@@ -13,5 +13,6 @@ namespace CourseProject.Services
         Task<bool> Create(Detail detail);
         Task<bool> Update(Detail detail);
         Task<bool> Delete(int id);
+        Task<List<Detail>> GetByName(string name);
     }
 }

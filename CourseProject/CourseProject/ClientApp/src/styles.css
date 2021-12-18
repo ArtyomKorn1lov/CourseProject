@@ -159,6 +159,11 @@ a {
     width: 200px;
 }
 
+.controll-button-block .auth-input {
+    margin-top: 15px;
+    width: 600px;
+}
+
 .frame-form {
     display: flex;
     flex-direction: column;
@@ -271,4 +276,8 @@ a {
     font-size: 20px;
     color: #ececec;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.mimic-bar {
+    width: 200px;
 }

@@ -13,5 +13,6 @@ namespace CourseProject.Repositories
         Task Create(Detail detail);
         Task Update(Detail detail);
         Task Delete(int id);
+        Task<List<Detail>> GetByName(string name);
     }
 }

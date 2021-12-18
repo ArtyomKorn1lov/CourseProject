@@ -43,5 +43,10 @@ namespace CourseProject.Repositories
             Detail _detail = await GetById(detail.Id);
             _detail.CopyFrom(detail);
         }
+
+        public async Task<List<Detail>> GetByName(string name)
+        {
+            return await _autoDbContext.Set<Detail>().Where(d => EF.Functions.Like(d.Name, name)).ToListAsync();
+        }
     }
 }

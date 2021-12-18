@@ -47,12 +47,26 @@ namespace CourseProject.Services
 
         public async Task<List<Provider>> GetAll()
         {
-            return await _providerRepository.GetAll();
+            try
+            {
+                return await _providerRepository.GetAll();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<Provider> GetById(int id)
         {
-            return await _providerRepository.GetById(id); 
+            try
+            {
+                return await _providerRepository.GetById(id);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<bool> Update(Provider provider)
@@ -65,6 +79,18 @@ namespace CourseProject.Services
             catch
             {
                 return false;
+            }
+        }
+
+        public async Task<List<Provider>> GetByName(string name)
+        {
+            try
+            {
+                return await _providerRepository.GetByName($"%{name}%");
+            }
+            catch
+            {
+                return null;
             }
         }
     }

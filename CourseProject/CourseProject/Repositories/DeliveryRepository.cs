@@ -43,5 +43,15 @@ namespace CourseProject.Repositories
             Delivery _delivery = await GetById(delivery.Id);
             _delivery.CopyFrom(delivery);
         }
+
+        public async Task<List<Delivery>> GetByDetailName(int id)
+        {
+            return await _autoDbContext.Set<Delivery>().Where(d => EF.Functions.Like(d.DetailId.ToString(), id.ToString())).ToListAsync();
+        }
+
+        public async Task<List<Delivery>> GetByProviderName(int id)
+        {
+            return await _autoDbContext.Set<Delivery>().Where(d => EF.Functions.Like(d.ProviderId.ToString(), id.ToString())).ToListAsync();
+        }
     }
 }

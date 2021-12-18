@@ -25,14 +25,14 @@ namespace CourseProject.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<List<DeliveryDto>> GetAll()
+        public async Task<List<DeliveryInfoDto>> GetAll()
         {
-            List<Delivery> deliveries = await _deliveryService.GetAll();
+            List<DeliveryInfoDto> deliveries = await _deliveryService.GetAll();
             if (deliveries == null)
             {
-                return new List<DeliveryDto>();
+                return new List<DeliveryInfoDto>();
             }
-            return deliveries.Select(d => DeliveryDtoConverter.ConvertToDeliveryDto(d)).ToList();
+            return deliveries;
         }
 
         [HttpPost]
@@ -77,6 +77,28 @@ namespace CourseProject.Controllers
                 return Ok("success");
             }
             return BadRequest("error");
+        }
+
+        [HttpGet("by-detail-name/{name}")]
+        public async Task<List<DeliveryInfoDto>> GetByDetailName(string name)
+        {
+            List<DeliveryInfoDto> deliveryInfoDtos = await _deliveryService.GetByDetailName(name);
+            if(deliveryInfoDtos == null)
+            {
+                return null;
+            }
+            return deliveryInfoDtos;
+        }
+
+        [HttpGet("by-provider-name/{name}")]
+        public async Task<List<DeliveryInfoDto>> GetByProviderName(string name)
+        {
+            List<DeliveryInfoDto> deliveryInfoDtos = await _deliveryService.GetByProviderName(name);
+            if(deliveryInfoDtos == null)
+            {
+                return null;
+            }
+            return deliveryInfoDtos;
         }
     }
 }

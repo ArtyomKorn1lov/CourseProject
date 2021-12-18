@@ -46,4 +46,8 @@ export class DetailService {
   updateDetail(detail: Detail): Observable<object>{
     return this.http.put<Detail>(`${this.commonUrl}`, detail);
   }
+
+  getByName(name: string): Observable<Detail[]>{
+    return this.http.get<Detail[]>(`${this.commonUrl}/by-name/${name}`);
+  }
 }

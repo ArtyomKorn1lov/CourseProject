@@ -47,4 +47,8 @@ export class ProviderService {
   updateProvider(provider: Provider): Observable<object>{
     return this.http.put<Provider>(`${this.commonUrl}`, provider);
   }
+
+  getByName(name: string): Observable<Provider[]>{
+    return this.http.get<Provider[]>(`${this.commonUrl}/by-name/${name}`);
+  }
 }

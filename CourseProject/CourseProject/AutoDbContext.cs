@@ -16,6 +16,7 @@ namespace CourseProject
             builder.ApplyConfiguration(new DetailConfiguration());
             builder.ApplyConfiguration(new ProviderConfiguration());
             builder.ApplyConfiguration(new DeliveryConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
         }
     }
 }

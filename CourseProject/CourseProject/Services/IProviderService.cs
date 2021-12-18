@@ -13,5 +13,7 @@ namespace CourseProject.Services
         Task<bool> Create(Provider provider);
         Task<bool> Update(Provider provider);
         Task<bool> Delete(int id);
+        Task<List<Provider>> GetByName(string name);
+
     }
 }

@@ -43,5 +43,10 @@ namespace CourseProject.Repositories
             Provider _provider = await GetById(provider.Id);
             _provider.CopyFrom(provider);
         }
+
+        public async Task<List<Provider>> GetByName(string name)
+        {
+            return await _autoDbContext.Set<Provider>().Where(d => EF.Functions.Like(d.Name, name)).ToListAsync();
+        }
     }
 }

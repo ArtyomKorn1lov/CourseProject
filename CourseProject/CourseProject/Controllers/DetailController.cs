@@ -79,5 +79,16 @@ namespace CourseProject.Controllers
             }
             return BadRequest("error");
         }
+
+        [HttpGet("by-name/{name}")]
+        public async Task<List<DetailDto>> GetByName(string name)
+        {
+            List<Detail> details = await _detailService.GetByName(name);
+            if (details == null)
+            {
+                return new List<DetailDto>();
+            }
+            return details.Select(d => DetailDtoConverter.ConvertToDetailDto(d)).ToList();
+        }
     }
 }

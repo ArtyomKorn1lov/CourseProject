@@ -78,5 +78,16 @@ namespace CourseProject.Controllers
             }
             return BadRequest("error");
         }
+
+        [HttpGet("by-name/{name}")]
+        public async Task<List<ProviderDto>> GetByName(string name)
+        {
+            List<Provider> providers = await _providerService.GetByName(name);
+            if (providers == null)
+            {
+                return new List<ProviderDto>();
+            }
+            return providers.Select(d => ProviderDtoConverter.ConvertToProviderDto(d)).ToList();
+        }
     }
 }

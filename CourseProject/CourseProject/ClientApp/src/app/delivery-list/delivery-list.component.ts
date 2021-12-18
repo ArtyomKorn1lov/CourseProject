@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Delivery } from '../dto/delivery';
-import { Detail } from '../dto/detail';
+import { DeliveryDtoInfo } from '../dto/DeliveryInfoDto';
 import { DeliveryService } from '../services/delivery.service';
-import { DetailService } from '../services/detail.service';
 
 @Component({
   selector: 'app-delivery-list',
@@ -11,13 +9,39 @@ import { DetailService } from '../services/detail.service';
 })
 export class DeliveryListComponent implements OnInit {
 
-  public deliveries: Delivery[] = [];
-  public details: Detail[] = [];
+  searchDetail : string | undefined;
+  searchProvider : string | undefined;
+  public deliveries: DeliveryDtoInfo[] = [];
 
-  constructor(private deliveryService: DeliveryService, private detailService: DetailService) { }
+  constructor(private deliveryService: DeliveryService) { }
 
   clearDeliverySessionStorage(): void{
     this.deliveryService.clearSessionStorage();
+  }
+
+  reloadList(): void {
+    this.searchDetail = '';
+    this.searchProvider = '';
+    this.deliveries = [];
+    this.getDeliveries();
+  }
+
+  getDeliveriesByDetailName(): void {
+    if(this.searchDetail != undefined)
+    {
+      this.searchProvider = '';
+      this.deliveries = [];
+      this.deliveryService.getByDetailName(this.searchDetail).subscribe(data => this.deliveries = data);
+    }
+  }
+
+  getDeliveriesByProviderName(): void {
+    if(this.searchProvider != undefined)
+    {
+      this.searchDetail = '';
+      this.deliveries = [];
+      this.deliveryService.getByProviderName(this.searchProvider).subscribe(data => this.deliveries = data);
+    }
   }
 
   getDeliveries(): void{
