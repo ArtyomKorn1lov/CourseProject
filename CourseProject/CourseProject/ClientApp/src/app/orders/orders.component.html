@@ -3,14 +3,20 @@
         <h2>Выберете к кому вы хотите получить доступ</h2>
     </div>
     <div class="create-button-block">
-        <button class="second-variation-bar" [routerLink]="['/delivery-list']">
-            <h1>Поставки</h1>
-        </button>
-        <button class="second-variation-bar" [routerLink]="['/detail-list']">
-            <h1>Детали</h1>
-        </button>
-        <button class="second-variation-bar" [routerLink]="['/provider-list']">
-            <h1>Поставщики</h1>
-        </button>
+        <div *ngIf="user.status == 'manager' || user.status == 'admin'">
+            <button class="second-variation-bar" [routerLink]="['/detail-list']">
+                <h1>Детали</h1>
+            </button>
+        </div>
+        <div>
+            <button class="second-variation-bar" [routerLink]="['/delivery-list']">
+                <h1>Поставки</h1>
+            </button>
+        </div>
+        <div *ngIf="user.status == 'manager' || user.status == 'admin'">
+            <button class="second-variation-bar" [routerLink]="['/provider-list']">
+                <h1>Поставщики</h1>
+            </button>
+        </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
             </p>
         </div>
     </div>
-    <div class="buttonblock">
+    <div *ngIf="user.id == 0" class="buttonblock">
         <button (click)="openRegDialog()" class="fisrt-variation-bar">
             <h1>Зарегистрироваться</h1>
         </button>

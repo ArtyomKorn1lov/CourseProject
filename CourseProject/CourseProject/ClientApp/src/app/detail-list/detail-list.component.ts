@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Detail } from '../dto/detail';
 import { DetailService } from '../services/detail.service';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-detail-list',
@@ -11,8 +13,9 @@ export class DetailListComponent implements OnInit {
 
   search : string | undefined;
   public details: Detail[] = [];
+  public user: User = new User(0, '', '', '', '');
 
-  constructor(private detailService: DetailService) { }
+  constructor(private userService: UserService, private detailService: DetailService) { }
 
   getDetails(): void {
     this.detailService.getDetails().subscribe((data: Detail[]) => this.details = data);  
@@ -36,7 +39,12 @@ export class DetailListComponent implements OnInit {
     }
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit(): void {
+    this.getUser();
     this.getDetails();
   }
 }

@@ -1,4 +1,4 @@
-<div class="page-selection">
+<div *ngIf="user.status == 'manager' || user.status == 'admin'" class="page-selection">
     <div class="head-block">
         <h2>Подробнее о поставщике</h2>
     </div>

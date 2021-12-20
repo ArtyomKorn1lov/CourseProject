@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Provider } from '../dto/provider';
 import { ProviderService } from '../services/provider.service';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-provider-list',
@@ -11,8 +13,9 @@ export class ProviderListComponent implements OnInit {
 
   search: string | undefined;
   public providers: Provider[] = [];
+  public user: User = new User(0, '', '', '', '');
 
-  constructor(private providerService: ProviderService) { }
+  constructor(private userService: UserService, private providerService: ProviderService) { }
 
   getProviders(): void {
     this.providerService.getProviders().subscribe(data => this.providers = data);
@@ -35,7 +38,12 @@ export class ProviderListComponent implements OnInit {
     this.providerService.pushInService(id);
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit(): void {
+    this.getUser();
     this.getProviders();
   }
 

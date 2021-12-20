@@ -6,12 +6,12 @@
         <h1>Регистрация</h1>
     </div>
     <div class="auth-inputs-block">
-        <input class="auth-input" type="text" placeholder="Имя">
-        <input class="auth-input" type="text" placeholder="Логин">
-        <input class="auth-input" type="password" placeholder="Пароль">
-        <input class="auth-input" type="text" placeholder="Подтвердите пароль">
-        <button class="fisrt-variation-bar">
-            <h1>Зарегистрироваться</h1>
+        <input [(ngModel)]="name" class="auth-input" type="text" placeholder="Имя">
+        <input [(ngModel)]="login" class="auth-input" type="text" placeholder="Логин">
+        <input [(ngModel)]="password" class="auth-input" type="password" placeholder="Пароль">
+        <input [(ngModel)]="confirm_password" class="auth-input" type="password" placeholder="Подтвердите пароль">
+        <button class="fisrt-variation-bar" (click)="registrateNewUser()">
+            <h1>Зарегистрироваться {{result}}</h1>
         </button>
         <button class="second-variation-bar" (click)="openAuthDialog()">
             <h1>У меня уже есть аккаунт</h1>

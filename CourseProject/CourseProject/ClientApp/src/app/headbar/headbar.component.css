@@ -9,6 +9,11 @@
     box-shadow: 0 0 10px;
 }
 
-a+a {
+.hyp-bar {
+    display: flex;
+    align-items: center;
+}
+
+.selector-hrev+.selector-hrev {
     margin-left: 25px;
 }

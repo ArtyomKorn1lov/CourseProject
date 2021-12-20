@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryDtoInfo } from '../dto/DeliveryInfoDto';
 import { DeliveryService } from '../services/delivery.service';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-delivery-list',
@@ -12,8 +14,9 @@ export class DeliveryListComponent implements OnInit {
   searchDetail : string | undefined;
   searchProvider : string | undefined;
   public deliveries: DeliveryDtoInfo[] = [];
+  public user: User = new User(0, '', '', '', '');
 
-  constructor(private deliveryService: DeliveryService) { }
+  constructor(private userService: UserService, private deliveryService: DeliveryService) { }
 
   clearDeliverySessionStorage(): void{
     this.deliveryService.clearSessionStorage();
@@ -52,7 +55,12 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryService.pushInService(id, providerId, detailId);
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit(): void {
+    this.getUser();
     this.clearDeliverySessionStorage();
     this.getDeliveries();
   }

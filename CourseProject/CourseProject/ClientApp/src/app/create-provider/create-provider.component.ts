@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateProviderDto } from '../dto/CreateProviderDto';
 import { ProviderService } from '../services/provider.service';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-create-provider',
@@ -14,8 +16,9 @@ export class CreateProviderComponent implements OnInit {
   address: string | undefined;
   phone: string | undefined;
   private targetRoute: string = '/provider-list';
+  public user: User = new User(0, '', '', '', '');
 
-  constructor(private router: Router, private providerService: ProviderService) { }
+  constructor(private userService: UserService, private router: Router, private providerService: ProviderService) { }
 
   CreateProvider(): void {
     if (this.name == null) {
@@ -35,7 +38,12 @@ export class CreateProviderComponent implements OnInit {
     this.router.navigateByUrl(this.targetRoute);
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit(): void {
+    this.getUser();
   }
 
 }

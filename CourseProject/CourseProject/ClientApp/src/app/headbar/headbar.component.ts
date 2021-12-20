@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogAuthComponent } from '../dialog-auth/dialog-auth.component';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-headbar',
@@ -9,13 +11,20 @@ import { DialogAuthComponent } from '../dialog-auth/dialog-auth.component';
 })
 export class HeadbarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  public user: User = new User(0, '', '', '', '');
+
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
   openAuthDialog() {
     const dialogRef = this.dialog.open(DialogAuthComponent);
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit(): void {
+    this.getUser();
   }
 
 }

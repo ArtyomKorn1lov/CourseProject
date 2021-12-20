@@ -3,6 +3,8 @@ import { Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogAuthComponent } from '../dialog-auth/dialog-auth.component';
 import { DialogRegComponent } from '../dialog-reg/dialog-reg.component';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -11,7 +13,9 @@ import { DialogRegComponent } from '../dialog-reg/dialog-reg.component';
 })
 export class MainpageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  public user: User = new User(0, '', '', '', '');
+
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
   openRegDialog() {
     const dialogRef = this.dialog.open(DialogRegComponent);
@@ -21,7 +25,11 @@ export class MainpageComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAuthComponent);
   }
 
-  ngOnInit(): void {
+  getUser(): void {
+    this.user = this.userService.getDataFromService()
   }
 
+  ngOnInit(): void {
+    this.getUser();
+  }
 }

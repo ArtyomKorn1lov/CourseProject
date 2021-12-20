@@ -6,6 +6,8 @@ import { Provider } from '../dto/provider';
 import { DeliveryService } from '../services/delivery.service';
 import { DetailService } from '../services/detail.service';
 import { ProviderService } from '../services/provider.service';
+import { User } from '../dto/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-create-delivery',
@@ -19,8 +21,9 @@ export class CreateDeliveryComponent implements OnInit {
   count: number | undefined;
   public provider!: Provider;
   public detail!: Detail;
+  public user: User = new User(0, '', '', '', '');
 
-  constructor(private router: Router, private deliveryService: DeliveryService, private detailService: DetailService, private providerService: ProviderService) { }
+  constructor(private userService: UserService, private router: Router, private deliveryService: DeliveryService, private detailService: DetailService, private providerService: ProviderService) { }
 
   getDetail(): void {
     this.detailId = this.deliveryService.getChoiseDetailId();
@@ -67,7 +70,12 @@ export class CreateDeliveryComponent implements OnInit {
     this.router.navigateByUrl('/delivery-list');
   }
 
+  getUser() {
+    this.user = this.userService.getDataFromService();
+  }
+
   ngOnInit() {
+    this.getUser();
     this.getDetail();
     this.getProvider();
     sessionStorage.setItem('DetailPage', '');

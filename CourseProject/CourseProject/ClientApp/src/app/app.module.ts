@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { FootbarComponent } from './footbar/footbar.component';
 import { HeadbarComponent } from './headbar/headbar.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAuthComponent } from './dialog-auth/dialog-auth.component';
 import { DialogRegComponent } from './dialog-reg/dialog-reg.component';
@@ -31,6 +30,7 @@ import { ProviderChoiseComponent } from './provider-choise/provider-choise.compo
 import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-choise-info.component';
 import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
     FootbarComponent,
     HeadbarComponent,
     MainpageComponent,
-    ProductListComponent,
     DialogAuthComponent,
     DialogRegComponent,
     DeliveryListComponent,
@@ -58,6 +57,7 @@ import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
     ProviderChoiseInfoComponent,
     DeliveryInfoComponent,
     EditDeliveryComponent,
+    ProfileInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +84,7 @@ import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
       { path: 'create-provider', component: CreateProviderComponent},
       { path: 'edit-provider', component: EditProviderComponent},
       { path: 'orders', component: OrdersComponent },
+      { path: 'profile-info', component: ProfileInfoComponent },
     ]),
     BrowserAnimationsModule,
     MatDialogModule,
