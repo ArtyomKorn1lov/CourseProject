@@ -21,7 +21,7 @@ export class DialogRegComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogRegComponent>, public dialog: MatDialog, private userService: UserService, private router: Router) { }
 
-  async registrateNewUser(): Promise<void> {
+  registrateNewUser(): void {
     if (this.name == undefined) {
       alert("Введите имя пользователя");
       return;

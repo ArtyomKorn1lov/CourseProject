@@ -4,6 +4,7 @@ import { Detail } from '../dto/detail';
 import { DetailService } from '../services/detail.service';
 import { User } from '../dto/User';
 import { UserService } from '../services/user.service';
+import { DeliveryService } from '../services/delivery.service';
 
 @Component({
   selector: 'app-edit-detail',
@@ -16,7 +17,7 @@ export class EditDetailComponent implements OnInit {
   private targetRoute: string = '/detail-info';
   public user: User = new User(0, '', '', '', '');
 
-  constructor(private userService: UserService, private router: Router, private detailService: DetailService) { }
+  constructor(private userService: UserService, private router: Router, private detailService: DetailService, private deliveryService: DeliveryService) { }
 
   UpdateDetail(): void {
     if (this.detail.name == null) {
@@ -36,7 +37,16 @@ export class EditDetailComponent implements OnInit {
   }
 
   deleteDetail(id: number): void {
-    this.detailService.deleteDetail(id).subscribe(x => console.log(x));
+    if (confirm("Вы уверены, что хотите удалить данную деталь?")) {
+      this.deliveryService.checkByDetailId(id).subscribe(data => {
+        if (data != null) {
+          alert("Удаление невозможно, данная деталь уже используется в поставке");
+          return;
+        }
+        this.detailService.deleteDetail(id).subscribe(x => console.log(x));
+        this.router.navigateByUrl('/detail-list');
+      });
+    }
   }
 
   getUser() {

@@ -4,6 +4,7 @@ import { Provider } from '../dto/provider';
 import { ProviderService } from '../services/provider.service';
 import { User } from '../dto/User';
 import { UserService } from '../services/user.service';
+import { DeliveryService } from '../services/delivery.service';
 
 @Component({
   selector: 'app-edit-provider',
@@ -16,7 +17,7 @@ export class EditProviderComponent implements OnInit {
   private targetRoute: string = '/provider-info';
   public user: User = new User(0, '', '', '', '');
 
-  constructor(private userService: UserService, private router: Router, private providerService: ProviderService) { }
+  constructor(private userService: UserService, private router: Router, private providerService: ProviderService, private deliveyService: DeliveryService) { }
 
   UpdateProvider(): void {
     if (this.provider.name == null) {
@@ -36,7 +37,18 @@ export class EditProviderComponent implements OnInit {
   }
 
   deleteProvider(id: number): void{
-    this.providerService.deleteProvider(id).subscribe(x => console.log(x));
+    if (confirm("Вы уверены, что хотите удалить данного поставщика?")) {
+      this.deliveyService.checkByProviderId(id).subscribe(data => {
+        if(data != null)
+        {
+          alert("Удаление невозможно, данный поставщик уже используется в поставке");
+          return;
+        }
+        this.providerService.deleteProvider(id).subscribe(x => console.log(x));
+        this.router.navigateByUrl('/provider-list');
+      });
+    }
+    
   }
 
   getUser() {

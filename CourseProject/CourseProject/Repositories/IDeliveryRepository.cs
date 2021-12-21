@@ -15,5 +15,7 @@ namespace CourseProject.Repositories
         Task Delete(int id);
         Task<List<Delivery>> GetByDetailName(int id);
         Task<List<Delivery>> GetByProviderName(int id);
+        Task<Delivery> CheckByDetailId(int id);
+        Task<Delivery> CheckByProviderId(int id);
     }
 }

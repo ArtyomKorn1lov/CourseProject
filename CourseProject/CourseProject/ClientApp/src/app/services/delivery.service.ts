@@ -114,4 +114,12 @@ export class DeliveryService {
   getByProviderName(name: string): Observable<DeliveryDtoInfo[]> {
     return this.http.get<DeliveryDtoInfo[]>(`${this.commonUrl}/by-provider-name/${name}`);
   }
+
+  checkByDetailId(id: number): Observable<Delivery> {
+    return this.http.get<Delivery>(`${this.commonUrl}/by-detail-id/${id}`);
+  }
+
+  checkByProviderId(id: number): Observable<Delivery> {
+    return this.http.get<Delivery>(`${this.commonUrl}/by-provider-id/${id}`);
+  }
 }

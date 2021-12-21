@@ -260,13 +260,15 @@ a {
 .form-block select {
     text-indent: 32px;
     outline: none;
-    width: 220px;
+    width: 400px;
     height: 50px;
-    border: 1px solid rgba(145, 150, 161, 0.4);
-    box-sizing: border-box;
-    color: rgba(37, 41, 45, 0.5);
-    appearance: none;
+    background: #b4b4b4;
+    box-shadow: 0px 8px 42px rgba(34, 39, 47, 0.04);
     border-radius: 16px;
+    box-shadow: 0 0 10px;
+    border: 1px solid rgba(145, 150, 161, 0.4);
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .form-block option {
@@ -274,7 +276,7 @@ a {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    color: #ececec;
+    color: #1d1d1d;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 

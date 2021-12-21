@@ -100,5 +100,27 @@ namespace CourseProject.Controllers
             }
             return deliveryInfoDtos;
         }
+
+        [HttpGet("by-detail-id/{id}")]
+        public async Task<DeliveryDto> GetByDetailId(int id)
+        {
+            Delivery delivery = await _deliveryService.CheckByDetailId(id);
+            if (delivery == null)
+            {
+                return null;
+            }
+            return DeliveryDtoConverter.ConvertToDeliveryDto(delivery);
+        }
+
+        [HttpGet("by-provider-id/{id}")]
+        public async Task<DeliveryDto> GetByProviderId(int id)
+        {
+            Delivery delivery = await _deliveryService.CheckByProviderId(id);
+            if (delivery == null)
+            {
+                return null;
+            }
+            return DeliveryDtoConverter.ConvertToDeliveryDto(delivery);
+        }
     }
 }

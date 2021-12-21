@@ -52,8 +52,10 @@ export class EditDeliveryComponent implements OnInit {
   }
 
   deleteDelivery(): void {
-    this.deliveryService.deleteDelivery(this.delivery.id).subscribe(x => console.log(x));
-    this.router.navigateByUrl('/delivery-list');
+    if (confirm("Вы уверены, что хотите удалить данную деталь?")) {
+      this.deliveryService.deleteDelivery(this.delivery.id).subscribe(x => console.log(x));
+      this.router.navigateByUrl('/delivery-list');
+    }
   }
 
   editDelivery(): void {
@@ -75,8 +77,8 @@ export class EditDeliveryComponent implements OnInit {
       alert("Введите количество");
       return;
     }
-    if(this.detailId != undefined) this.delivery.detailId = this.detailId;
-    if(this.providerId != undefined) this.delivery.providerId = this.providerId;
+    if (this.detailId != undefined) this.delivery.detailId = this.detailId;
+    if (this.providerId != undefined) this.delivery.providerId = this.providerId;
     this.delivery.date = new Date();
     this.delivery.price = this.detail.price * this.delivery.count;
     this.deliveryService.updateDelivery(this.delivery).subscribe(x => console.log(x));
@@ -95,7 +97,7 @@ export class EditDeliveryComponent implements OnInit {
     if (this.detailId == undefined) {
       this.detailService.getDetailById(this.deliveryService.getDeliveryDetailIdFromService()).subscribe(data => this.detail = data);
     }
-    if(this.providerId == undefined) {
+    if (this.providerId == undefined) {
       this.providerService.getProviderById(this.deliveryService.getDeliveryProviderIdFromService()).subscribe(data => this.provider = data);
     }
   }

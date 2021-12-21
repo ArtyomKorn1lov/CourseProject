@@ -114,6 +114,30 @@ namespace CourseProject.Services
             }
         }
 
+        public async Task<Delivery> CheckByDetailId(int id)
+        {
+            try
+            {
+                return await _deliveryRepository.CheckByDetailId(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<Delivery> CheckByProviderId(int id)
+        {
+            try
+            {
+                return await _deliveryRepository.CheckByProviderId(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<List<Delivery>> FindDeliveriesByDetailName(List<Detail> details)
         {
             List<List<Delivery>> deliveries = new List<List<Delivery>>();

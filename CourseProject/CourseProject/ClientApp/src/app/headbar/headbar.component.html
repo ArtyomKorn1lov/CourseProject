@@ -6,7 +6,7 @@
         <div *ngIf="user.id == 1" class="selector-hrev">
             <a [routerLink]="['/orders']">Заказы</a>
         </div>
-        <div *ngIf="user.status == 'admin'" class="selector-hrev">
+        <div [routerLink]="['/user-list']" *ngIf="user.status == 'admin'" class="selector-hrev">
             <a>Сотрудники</a>
         </div>
     </div>

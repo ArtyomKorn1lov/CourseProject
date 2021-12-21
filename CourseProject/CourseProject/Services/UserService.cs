@@ -34,22 +34,6 @@ namespace CourseProject.Services
             }
         }
 
-        public async Task<bool> FindPasswordByLogin(User user)
-        {
-            try
-            {
-                if(user.Password == await _userRepository.FindPasswordByLogin(user.Login))
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public async Task<bool> CreateUser(User user)
         {
             try

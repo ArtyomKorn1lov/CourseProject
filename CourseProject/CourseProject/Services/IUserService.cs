@@ -11,7 +11,6 @@ namespace CourseProject.Services
     {
         Task<List<User>> GetAll();
         Task<User> CheckLogin(string login);
-        Task<bool> FindPasswordByLogin(User user);
         Task<User> Authorise(string login, string password);
         Task<bool> CreateUser(User user);
         Task<bool> UpdateUser(User user);

@@ -26,16 +26,6 @@ namespace CourseProject.Repositories
             return null;
         }
 
-        public async Task<string> FindPasswordByLogin(string login)
-        {
-            User user = await _autoDbContext.Set<User>().FirstOrDefaultAsync(d => d.Login == login);
-            if (user != null)
-            {
-                return user.Password;
-            }
-            return null;
-        }
-
         public async Task CreateUser(User user)
         {
             await _autoDbContext.Set<User>().AddAsync(user);

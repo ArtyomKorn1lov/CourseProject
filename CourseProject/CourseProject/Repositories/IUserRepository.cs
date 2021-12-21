@@ -15,7 +15,6 @@ namespace CourseProject.Repositories
         Task<User> GetById(int id);
         Task<List<User>> GetUsersByName(string name);
         Task<User> CheckLogin(string login);
-        Task<string> FindPasswordByLogin(string login);
         Task<User> Authorise(string login, string password);
     }
 }

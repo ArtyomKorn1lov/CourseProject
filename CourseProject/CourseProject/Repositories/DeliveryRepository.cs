@@ -53,5 +53,15 @@ namespace CourseProject.Repositories
         {
             return await _autoDbContext.Set<Delivery>().Where(d => EF.Functions.Like(d.ProviderId.ToString(), id.ToString())).ToListAsync();
         }
+
+        public async Task<Delivery> CheckByDetailId(int id)
+        {
+            return await _autoDbContext.Set<Delivery>().FirstOrDefaultAsync(d => d.DetailId == id);
+        }
+
+        public async Task<Delivery> CheckByProviderId(int id)
+        {
+            return await _autoDbContext.Set<Delivery>().FirstOrDefaultAsync(d => d.ProviderId == id);
+        }
     }
 }

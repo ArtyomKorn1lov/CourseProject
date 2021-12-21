@@ -16,7 +16,7 @@ export class ProfileInfoComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   exitUser() {
-    this.userService.clearUserService();
+    sessionStorage.clear();
     this.router.navigateByUrl(this.targetRoute);
     location.reload();
   }

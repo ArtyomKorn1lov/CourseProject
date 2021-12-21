@@ -31,6 +31,10 @@ import { ProviderChoiseInfoComponent } from './provider-choise-info/provider-cho
 import { DeliveryInfoComponent } from './delivery-info/delivery-info.component';
 import { EditDeliveryComponent } from './edit-delivery/edit-delivery.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
     DeliveryInfoComponent,
     EditDeliveryComponent,
     ProfileInfoComponent,
+    UserListComponent,
+    UserInfoComponent,
+    UserCreateComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +93,10 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
       { path: 'edit-provider', component: EditProviderComponent},
       { path: 'orders', component: OrdersComponent },
       { path: 'profile-info', component: ProfileInfoComponent },
+      { path: 'user-list', component: UserListComponent },
+      { path: 'user-info', component: UserInfoComponent },
+      { path: 'user-create', component: UserCreateComponent },
+      { path: 'user-edit', component: UserEditComponent },
     ]),
     BrowserAnimationsModule,
     MatDialogModule,

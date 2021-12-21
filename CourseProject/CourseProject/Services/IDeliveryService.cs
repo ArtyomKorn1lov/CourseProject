@@ -16,6 +16,8 @@ namespace CourseProject.Services
         Task<bool> Delete(int id);
         Task<List<DeliveryInfoDto>> GetByDetailName(string name);
         Task<List<DeliveryInfoDto>> GetByProviderName(string name);
+        Task<Delivery> CheckByDetailId(int id);
+        Task<Delivery> CheckByProviderId(int id);
         Task<List<Delivery>> FindDeliveriesByDetailName(List<Detail> details);
         Task<List<Delivery>> FindDeliveriesByProviderName(List<Provider> providers);
         Task<List<DeliveryInfoDto>> CompareByDeliveryInfoDto(List<Delivery> deliveries);
