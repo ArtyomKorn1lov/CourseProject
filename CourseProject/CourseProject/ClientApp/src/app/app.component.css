@@ -22,3 +22,8 @@
     min-width: 1440px;
     box-shadow: 0 0 10px;
 }
+
+.footer-block-container {
+    height: 60px;
+    width: 100px;
+}

@@ -19,7 +19,7 @@
                 <h1>Наименование поставщика:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="provider.name" class="auth-input" type="text" placeholder="Введите наименование">
+                <input [(ngModel)]="provider.name" class="auth-input" type="text" placeholder="Введите наименование" maxlength="100">
             </div>
         </div>
         <div class="input-form">
@@ -27,7 +27,7 @@
                 <h1>Адрес поставщика:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="provider.address" class="auth-input" type="text" placeholder="Введите адрес">
+                <input [(ngModel)]="provider.address" class="auth-input" type="text" placeholder="Введите адрес" maxlength="100">
             </div>
         </div>
         <div class="input-form">
@@ -35,7 +35,7 @@
                 <h1>Телефон поставщика:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="provider.phone" class="auth-input" type="text" placeholder="Введите телефон">
+                <input [(ngModel)]="provider.phone" class="auth-input" type="text" placeholder="Введите телефон" maxlength="100">
             </div>
         </div>
     </div>

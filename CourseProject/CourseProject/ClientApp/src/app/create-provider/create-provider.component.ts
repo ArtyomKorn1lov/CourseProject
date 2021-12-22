@@ -21,16 +21,19 @@ export class CreateProviderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private providerService: ProviderService) { }
 
   CreateProvider(): void {
-    if (this.name == null) {
+    if (this.name == null || this.name.trim() == '') {
       alert("Введите наименование поставщика");
+      this.name = '';
       return;
     }
-    if (this.address == null) {
+    if (this.address == null || this.address.trim() == '') {
       alert("Введите адрес поставщика");
+      this.address = '';
       return;
     }
-    if (this.phone == null) {
+    if (this.phone == null || this.phone.trim() == '') {
       alert("Введите телефон поставщика");
+      this.phone = '';
       return;
     }
     var provider = new CreateProviderDto(this.name, this.address, this.phone);

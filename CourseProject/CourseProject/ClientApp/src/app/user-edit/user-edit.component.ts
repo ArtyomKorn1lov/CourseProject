@@ -17,16 +17,19 @@ export class UserEditComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   updateUser(): void {
-    if (this.currentUser.name == null) {
+    if (this.currentUser.name == null || this.currentUser.name.trim() == '') {
       alert("Введите имя пользователя");
+      this.currentUser.name = '';
       return;
     }
-    if (this.currentUser.login == null) {
+    if (this.currentUser.login == null || this.currentUser.login.trim() == '') {
       alert("Введите логин");
+      this.currentUser.login = '';
       return;
     }
-    if (this.currentUser.password == null) {
+    if (this.currentUser.password == null || this.currentUser.password.trim() == '') {
       alert("Введите пароль");
+      this.currentUser.password = '';
       return;
     }
     var user = this.currentUser;

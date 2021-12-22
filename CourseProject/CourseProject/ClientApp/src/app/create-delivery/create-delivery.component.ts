@@ -60,8 +60,14 @@ export class CreateDeliveryComponent implements OnInit {
       alert("Выберете деталь");
       return;
     }
-    if (this.count == null) {
+    if (this.count == null || this.count == 0) {
       alert("Введите количество");
+      this.count = 1;
+      return;
+    }
+    if (this.count >= 100000) {
+      alert("Слишком большое количество товара, поставщики не потянут такое");
+      this.count = 1;
       return;
     }
     var date = new Date();

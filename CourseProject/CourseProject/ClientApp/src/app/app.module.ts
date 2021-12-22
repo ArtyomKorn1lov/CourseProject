@@ -7,7 +7,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FootbarComponent } from './footbar/footbar.component';
 import { HeadbarComponent } from './headbar/headbar.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,7 +38,6 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FootbarComponent,
     HeadbarComponent,
     MainpageComponent,
     DialogAuthComponent,

@@ -75,6 +75,12 @@ export class EditDeliveryComponent implements OnInit {
     }
     if (this.delivery.count == null) {
       alert("Введите количество");
+      this.delivery.count = 1;
+      return;
+    }
+    if (this.delivery.count >= 100000) {
+      alert("Слишком большое количество товара, поставщики не потянут такое");
+      this.delivery.count = 1;
       return;
     }
     if (this.detailId != undefined) this.delivery.detailId = this.detailId;

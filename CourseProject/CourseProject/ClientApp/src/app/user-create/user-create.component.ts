@@ -25,16 +25,19 @@ export class UserCreateComponent implements OnInit {
   }
 
   createNewUser(): void {
-    if (this.name == undefined) {
+    if (this.name == undefined || this.name.trim() == '') {
       alert("Введите имя пользователя");
+      this.name = '';
       return;
     }
-    if (this.login == undefined) {
+    if (this.login == undefined || this.login.trim() == '') {
       alert("Введите логин");
+      this.login = '';
       return;
     }
-    if (this.password == undefined) {
+    if (this.password == undefined || this.password.trim() == '') {
       alert("Введите пароль");
+      this.password = '';
       return;
     }
     var user = new CreateUserDto(this.name, this.login, this.password, this.status);

@@ -22,24 +22,30 @@ export class DialogRegComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogRegComponent>, public dialog: MatDialog, private userService: UserService, private router: Router) { }
 
   registrateNewUser(): void {
-    if (this.name == undefined) {
+    if (this.name == undefined || this.name.trim() == '') {
       alert("Введите имя пользователя");
+      this.name = '';
       return;
     }
-    if (this.login == undefined) {
+    if (this.login == undefined || this.login.trim() == '') {
       alert("Введите логин");
+      this.login = '';
       return;
     }
-    if (this.password == undefined) {
+    if (this.password == undefined || this.password.trim() == '') {
       alert("Введите пароль");
+      this.password = '';
       return;
     }
-    if (this.confirm_password == undefined) {
+    if (this.confirm_password == undefined || this.password.trim() == '') {
       alert("Подтвердите пароль");
+      this.confirm_password = '';
       return;
     }
     if (this.confirm_password != this.password) {
       alert("Пароли не совпадают, проверьте пароли");
+      this.password = '';
+      this.confirm_password = '';
       return;
     }
     var user = new CreateUserDto(this.name, this.login, this.password, "user");

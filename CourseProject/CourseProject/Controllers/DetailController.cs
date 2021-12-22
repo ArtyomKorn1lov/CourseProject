@@ -90,5 +90,16 @@ namespace CourseProject.Controllers
             }
             return details.Select(d => DetailDtoConverter.ConvertToDetailDto(d)).ToList();
         }
+
+        [HttpGet("by-article/{article}")]
+        public async Task<DetailDto> GetByArticle(int article)
+        {
+            Detail detail = await _detailService.CheckByArticle(article);
+            if(detail == null)
+            {
+                return null;
+            }
+            return DetailDtoConverter.ConvertToDetailDto(detail);
+        }
     }
 }

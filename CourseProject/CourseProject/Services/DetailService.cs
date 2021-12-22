@@ -91,5 +91,17 @@ namespace CourseProject.Services
                 return null;
             }
         }
+
+        public async Task<Detail> CheckByArticle(int article)
+        {
+            try
+            {
+                return await _detailRepository.CheckByArticle(article);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

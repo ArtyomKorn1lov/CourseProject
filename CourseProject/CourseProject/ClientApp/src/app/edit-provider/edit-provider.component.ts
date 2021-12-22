@@ -20,16 +20,19 @@ export class EditProviderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private providerService: ProviderService, private deliveyService: DeliveryService) { }
 
   UpdateProvider(): void {
-    if (this.provider.name == null) {
+    if (this.provider.name == null || this.provider.name.trim() == '') {
       alert("Введите наименование поставщика");
+      this.provider.name = '';
       return;
     }
-    if (this.provider.address == null) {
+    if (this.provider.address == null || this.provider.address.trim() == '') {
       alert("Введите адрес");
+      this.provider.address = '';
       return;
     }
-    if (this.provider.phone == null) {
+    if (this.provider.phone == null || this.provider.phone.trim() == '') {
       alert("Введите телефон");
+      this.provider.phone = '';
       return;
     }
     this.providerService.updateProvider(this.provider).subscribe(x => console.log(x));

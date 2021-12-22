@@ -16,18 +16,22 @@ export class DialogAuthComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogAuthComponent>, private userService: UserService, public dialog: MatDialog) { }
 
   authoriseUser(): void {
-    if (this.login == undefined) {
+    if (this.login == undefined || this.login.trim() == '') {
       alert("Введите логин");
+      this.login = '';
       return;
     }
-    if (this.password == undefined) {
+    if (this.password == undefined || this.password.trim() == '') {
       alert("Введите пароль");
+      this.password = '';
       return;
     }
     this.userService.authorise(this.login, this.password).subscribe(data => {
       if(data == null)
       {
         alert("Неверный логин или пароль");
+        this.login = '';
+        this.password = '';
         return;
       }
       this.dialogRef.close();

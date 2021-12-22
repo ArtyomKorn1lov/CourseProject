@@ -50,4 +50,8 @@ export class DetailService {
   getByName(name: string): Observable<Detail[]>{
     return this.http.get<Detail[]>(`${this.commonUrl}/by-name/${name}`);
   }
+
+  checkByArticle(article: number): Observable<Detail> {
+    return this.http.get<Detail>(`${this.commonUrl}/by-article/${article}`);
+  }
 }

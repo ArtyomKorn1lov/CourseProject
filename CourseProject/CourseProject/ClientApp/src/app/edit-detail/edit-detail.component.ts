@@ -20,16 +20,29 @@ export class EditDetailComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private detailService: DetailService, private deliveryService: DeliveryService) { }
 
   UpdateDetail(): void {
-    if (this.detail.name == null) {
+    if (this.detail.name == null || this.detail.name.trim() == '') {
       alert("Введите наименование товара");
+      this.detail.name = '';
       return;
     }
     if (this.detail.articleNumber == null) {
       alert("Введите артикль");
+      this.detail.articleNumber = 0;
       return;
     }
-    if (this.detail.price == null) {
+    if (this.detail.price == null || this.detail.price == 0) {
       alert("Введите цену");
+      this.detail.price = 1;
+      return;
+    }
+    if (this.detail.articleNumber >= 2000000000) {
+      alert("Слишком большое число для артикля");
+      this.detail.articleNumber = 0;
+      return;
+    }
+    if (this.detail.price >= 2000000000) {
+      alert("Слишком большое число для цены");
+      this.detail.price = 1;
       return;
     }
     this.detailService.updateDetail(this.detail).subscribe(x => console.log(x));

@@ -19,7 +19,7 @@
                 <h1>Имя пользователя:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="currentUser.name" class="auth-input" type="text" placeholder="Введите имя">
+                <input [(ngModel)]="currentUser.name" class="auth-input" type="text" placeholder="Введите имя" maxlength="100">
             </div>
         </div>
         <div class="input-form">
@@ -27,7 +27,7 @@
                 <h1>Логин:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="currentUser.login" class="auth-input" type="text" placeholder="Введите логин">
+                <input [(ngModel)]="currentUser.login" class="auth-input" type="text" placeholder="Введите логин" maxlength="100">
             </div>
         </div>
         <div class="input-form">
@@ -35,7 +35,7 @@
                 <h1>Пароль пользователя:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="currentUser.password" class="auth-input" type="text" placeholder="Введите пароль">
+                <input [(ngModel)]="currentUser.password" class="auth-input" type="text" placeholder="Введите пароль" maxlength="100">
             </div>
         </div>
         <div class="input-form">

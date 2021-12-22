@@ -19,7 +19,7 @@
                 <h1>Название детали:</h1>
             </div>
             <div class="form-block">
-                <input [(ngModel)]="detail.name" class="auth-input" type="text" placeholder="Введите название">
+                <input [(ngModel)]="detail.name" class="auth-input" type="text" placeholder="Введите название" maxlength="100">
             </div>
         </div>
         <div class="input-form">
@@ -43,7 +43,7 @@
                 <h1>Краткое описание детали:</h1>
             </div>
             <div class="form-block">
-                <textarea [(ngModel)]="detail.note" class="form-textarea" placeholder="Краткое описание детали (150 символов)"></textarea>
+                <textarea maxlength="300" [(ngModel)]="detail.note" class="form-textarea" placeholder="Краткое описание детали (300 символов)"></textarea>
             </div>
         </div>
     </div>
